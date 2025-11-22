@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JosephChef - Fast Food Gouraya & Tipaza</title>
+  <meta name="description" content="Commande en ligne JosephChef : burgers, tacos, paninis - Livraison Gouraya et Tipaza"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Cairo:wght@400;600;800&family=Amiri:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      --primary: #e63946;
+      --dark: #1d3557;
+      --light: #f1faee;
+      --text: #333;
+      --bg: #fff;
+    }
+    [data-theme="dark"] {
+      --dark: #f1faee;
+      --light: #1d3557;
+      --text: #f1faee;
+      --bg: #1a1a1a;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Poppins', 'Cairo', sans-serif; background:var(--bg); color:var(--text); line-height:1.8; transition: all 0.3s; }
+    a { text-decoration:none; }
+
+    /* Switches */
+    .switches {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      z-index: 9999;
+      display: flex;
+      gap: 10px;
+    }
+    .switch {
+      background: var(--dark);
+      border-radius: 50px;
+      padding: 8px;
+      display: flex;
+    }
+    .switch-btn {
+      padding: 8px 15px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 50px;
+      transition: 0.3s;
+    }
+    .switch-btn.active { background: var(--primary); }
+
+    header {
+      background: var(--dark);
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .logo { font-size: 2.2rem; font-weight: 800; color: var(--primary); }
+    .cart-icon { font-size: 1.6rem; position: relative; cursor:pointer; }
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: var(--primary);
+      color: white;
+      font-size: 0.8rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      margin-top: 70px;
+    }
+    .hero h1 { font-size: 4.8rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.7rem; }
+
+    .btn { background: var(--primary); color: white; padding: 1rem 3rem; border-radius: 50px; font-size: 1.4rem; font-weight: 600; }
+    .btn:hover { background:#c1121f; transform: scale(1.05); }
+
+    .city-select { background: var(--dark); padding: 3rem; text-align: center; color: white; }
+    .city-btn { background: transparent; border: 2px solid var(--primary); color: white; padding: 1rem 2.5rem; margin: 0 1rem; border-radius: 50px; font-size: 1.3rem; cursor: pointer; }
+    .city-btn.active, .city-btn:hover { background: var(--primary); }
+
+    .menu { padding: 5rem 5%; background: var(--light); }
+    .section-title { text-align: center; font-size: 3rem; margin-bottom: 3rem; color: var(--dark); }
+    .promo-badge { background: #28a745; color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.9rem; margin-left: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .card { background: var(--bg); border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; }
+    .card:hover { transform: translateY(-10px); }
+    .card img { width: 100%; height: 220px; object-fit: cover; }
+    .price { font-size: 1.9rem; color: var(--primary); font-weight: 800; }
+    .old-price { text-decoration: line-through; color: #999; margin-left: 10px; }
+
+    .cart {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100vh;
+      background: var(--bg);
+      box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+      transition: 0.4s;
+      z-index: 2000;
+      padding: 2rem;
+      overflow-y: auto;
+      color: var(--text);
+    }
+    .cart.open { right: 0; }
+    .checkout-btn { background: var(--primary); color: white; padding: 1.2rem; width: 100%; border: none; border-radius: 50px; font-size: 1.4rem; cursor: pointer; }
+
+    footer { background: var(--dark); color: white; padding: 4rem 5% 2rem; text-align: center; }
+
+    /* Mode arabe */
+    html[lang="ar"] { direction: rtl; }
+    html[lang="ar"] .cart { right: auto; left: -400px; box-shadow: 5px 0 15px rgba(0,0,0,0.2); }
+    html[lang="ar"] .cart.open { left: 0; right: auto; }
+    html[lang="ar"] .cart-count { right: auto; left: -10px; }
+    html[lang="ar"] .switches { right: auto; left: 20px; }
+  </style>
+</head>
+<body data-theme="light">
+
+  <!-- Switches -->
+  <div class="switches">
+    <div class="switch">
+      <div class="switch-btn active" data-lang="fr">FR</div>
+      <div class="switch-btn" data-lang="ar">عربي</div>
+    </div>
+    <div class="switch">
+      <div class="switch-btn active" data-theme="light">☀️</div>
+      <div class="switch-btn" data-theme="dark">🌙</div>
+    </div>
+  </div>
+
+  <header>
+    <div class="logo" data-tr="logo">Joseph<span style="color:white;">Chef</span></div>
+    <nav>
+      <a href="#menu" data-tr="menu">Menu</a>
+      <a href="#contact" data-tr="contact">Contact</a>
+      <a href="tel:+213559306968">0559 30 69 68</a>
+    </nav>
+    <div class="cart-icon" onclick="toggleCart()">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count">0</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1 data-tr="title">JosephChef</h1>
+    <p data-tr="slogan">Le goût qui fait voyager tes papilles !</p>
+    <a href="#city" class="btn" data-tr="order_now">Commander maintenant</a>
+  </section>
+
+  <section id="city" class="city-select">
+    <h2 data-tr="city_question">Où veux-tu te faire livrer ?</h2>
+    <button class="city-btn active" data-city="gouraya" data-tr-city="gouraya">Gouraya</button>
+    <button class="city-btn" data-city="tipaza" data-tr-city="tipaza">Tipaza</button>
+  </section>
+
+  <section id="menu" class="menu">
+    <h2 class="section-title" data-tr="our_menu">Notre Menu</h2>
+    <div id="promos-section" style="margin-bottom: 3rem; padding: 2rem; background: rgba(40,167,69,0.1); border-radius: 15px; text-align: center;">
+      <h3 data-tr="promos_title">Promotions du jour ! 🔥</h3>
+      <div class="grid" id="promos-grid"></div>
+    </div>
+    <div class="grid" id="menu-grid"></div>
+  </section>
+
+  <div class="cart" id="cart">
+    <h2 data-tr="cart">Panier</h2>
+    <div id="cart-items"></div>
+    <div class="total" data-tr="total">Total : <span id="cart-total">0</span> DA</div>
+    <button class="checkout-btn" data-tr="checkout" onclick="checkout()">Commander via WhatsApp</button>
+    <button style="margin-top:1rem;background:#999;" class="checkout-btn" onclick="toggleCart()" data-tr="close">Fermer</button>
+  </div>
+
+  <footer id="contact">
+    <h2>JosephChef</h2>
+    <p data-tr="footer_desc">Fast-Food Gourmet à Gouraya & Tipaza</p>
+    <p><strong data-tr="gouraya">Gouraya</strong> : <span data-tr="gouraya_loc">Centre-ville, en face de la mosquée</span></p>
+    <p><strong data-tr="tipaza">Tipaza</strong> : <span data-tr="tipaza_loc">Route de la plage, près du port</span></p>
+    <p>0559 30 69 68</p>
+    <div class="socials">
+      <a href="https://facebook.com/josephchef"><i class="fab fa-facebook"></i></a>
+      <a href="https://instagram.com/josephchef"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/213559306968"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p>&copy; 2025 JosephChef</p>
+  </footer>
+
+  <script>
+    // Traductions
+    const translations = {
+      fr: {
+        logo: "Joseph<span style='color:white;'>Chef</span>",
+        title: "JosephChef",
+        slogan: "Le goût qui fait voyager tes papilles !",
+        order_now: "Commander maintenant",
+        city_question: "Où veux-tu te faire livrer ?",
+        gouraya: "Gouraya",
+        tipaza: "Tipaza",
+        our_menu: "Notre Menu",
+        promos_title: "Promotions du jour ! 🔥",
+        menu: "Menu",
+        contact: "Contact",
+        cart: "Panier",
+        total: "Total : ",
+        checkout: "Commander via WhatsApp",
+        close: "Fermer",
+        footer_desc: "Fast-Food Gourmet à Gouraya & Tipaza",
+        gouraya_loc: "Centre-ville, en face de la mosquée",
+        tipaza_loc: "Route de la plage, près du port"
+      },
+      ar: {
+        logo: "جوزيف<span style='color:white;'>شيف</span>",
+        title: "جوزيف شيف",
+        slogan: "الذوق اللي يخليك تحب الأكل من جديد!",
+        order_now: "اطلب دحذا",
+        city_question: "وين تبغي نوصلولك الطلبية؟",
+        gouraya: "ڨوراية",
+        tipaza: "تيبازة",
+        our_menu: "المنيو تاعنا",
+        promos_title: "العروض اليومية ! 🔥",
+        menu: "المنيو",
+        contact: "تواصل معانا",
+        cart: "السلة",
+        total: "المجموع : ",
+        checkout: "اطلب عبر الواتساب",
+        close: "اغلق",
+        footer_desc: "فاست فود فاخر في ڨوراية و تيبازة",
+        gouraya_loc: "وسط المدينة، قدام الجامع",
+        tipaza_loc: "طريق الشاطئ، قرب الميناء"
+      }
+    };
+
+    // Menu normal
+    const menuItems = [
+      {fr:"Burger Joseph Classic", ar:"برغر جوزيف الكلاسيكي", price:850},
+      {fr:"Double Cheese Burger", ar:"دبل تشيز برغر", price:1200},
+      {fr:"Tacos Viande Hachée", ar:"تاكوس لحم مفروم", price:900},
+      {fr:"Tacos 3 Viandes", ar:"تاكوس 3 لحوم", price:1300},
+      {fr:"Panini Escalope", ar:"بانيني اسكالوب", price:800},
+      {fr:"Frites Maison + Sauce", ar:"بطاطس مقلية مع الصلصة", price:350},
+      {fr:"Menu Enfant", ar:"منيو الأطفال (برغر+بطاطس+عصير)", price:950},
+      {fr:"Coca / Orangina 1.5L", ar:"كوكا / اورنجينا 1.5 لتر", price:250}
+    ];
+
+    // Promotions du jour (exemples - change-les !)
+    const promos = [
+      {fr:"Burger Classic", ar:"برغر كلاسيكي", oldPrice:850, price:680, img:"https://images.unsplash.com/photo-1565299507177-b0ac66763828"},
+      {fr:"Tacos Viande", ar:"تاكوس لحم", oldPrice:900, price:720, img:"https://images.unsplash.com/photo-1626702900569-88e58e2088b4"},
+      {fr:"Menu Enfant", ar:"منيو الأطفال", oldPrice:950, price:760, img:"https://images.unsplash.com/photo-1571091718767-18cab704d635"}
+    ];
+
+    let currentLang = 'fr';
+    let currentTheme = 'light';
+    let cart = [];
+    let selectedCity = "Gouraya";
+
+    // Switches langues
+    document.querySelectorAll('[data-lang]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentLang = btn.dataset.lang;
+        document.documentElement.lang = currentLang;
+        document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+        document.querySelectorAll('[data-lang]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        updateTexts();
+        updateMenu();
+        updatePromos();
+      });
+    });
+
+    // Switch thème sombre
+    document.querySelectorAll('[data-theme]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentTheme = btn.dataset.theme;
+        document.body.dataset.theme = currentTheme;
+        document.querySelectorAll('[data-theme]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    function updateTexts() {
+      document.querySelectorAll('[data-tr]').forEach(el => {
+        const key = el.dataset.tr;
+        el.innerHTML = translations[currentLang][key] || el.innerHTML;
+      });
+      document.querySelectorAll('[data-tr-city]').forEach(btn => {
+        btn.textContent = translations[currentLang][btn.dataset.trCity] || btn.textContent;
+      });
+      selectedCity = document.querySelector('.city-btn.active').textContent.trim();
+    }
+
+    function updateMenu() {
+      const grid = document.getElementById('menu-grid');
+      grid.innerHTML = '';
+      menuItems.forEach((item, i) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="">
+          <div class="card-body" style="padding:1.5rem;">
+            <h3 class="card-title">${currentLang === 'fr' ? item.fr : item.ar}</h3>
+            <div class="price">${item.price} DA</div>
+            <button class="add-to-cart btn" onclick="addToCart(${i})" style="width:100%;margin-top:1rem;">${currentLang==='fr'?'Ajouter':'اضف للسلة'}</button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function updatePromos() {
+      const promosGrid = document.getElementById('promos-grid');
+      promosGrid.innerHTML = '';
+      promos.forEach((item, i) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${item.img}?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="">
+          <div class="card-body" style="padding:1.5rem;">
+            <h3 class="card-title">${currentLang === 'fr' ? item.fr : item.ar} <span class="promo-badge">${currentLang==='fr'?'Promo':'عرض'}</span></h3>
+            <div class="price"><span class="old-price">${item.oldPrice} DA</span> ${item.price} DA</div>
+            <button class="add-to-cart btn" onclick="addToPromoCart(${i})" style="width:100%;margin-top:1rem;background:#28a745;">${currentLang==='fr'?'Ajouter (Promo)':'اضف (عرض)'}</button>
+          </div>
+        `;
+        promosGrid.appendChild(card);
+      });
+    }
+
+    // Ville
+    document.querySelectorAll('.city-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedCity = btn.textContent.trim();
+      });
+    });
+
+    // Panier (normal + promos)
+    function addToCart(i) { cart.push(menuItems[i]); updateCart(); }
+    function addToPromoCart(i) { 
+      const promoItem = {...promos[i], isPromo: true};
+      cart.push(promoItem); 
+      updateCart(); 
+    }
+    function removeFromCart(i) { cart.splice(i, 1); updateCart(); }
+
+    function updateCart() {
+      const items = document.getElementById('cart-items');
+      items.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, i) => {
+        total += item.price || item.oldPrice; // Pour promos
+        const name = currentLang==='fr' ? (item.fr || item.name) : (item.ar || item.name);
+        items.innerHTML += `
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:1rem 0;border-bottom:1px solid #eee;">
+            <div><strong>${name}</strong><br>${item.price || item.oldPrice} DA</div>
+            <button onclick="removeFromCart(${i})" style="background:none;border:none;color:red;font-size:1.8rem;">×</button>
+          </div>
+        `;
+      });
+      document.querySelector('.cart-count').textContent = cart.length;
+      document.getElementById('cart-total').textContent = total.toLocaleString();
+    }
+
+    function toggleCart() { document.getElementById('cart').classList.toggle('open'); }
+
+    function checkout() {
+      if (cart.length === 0) return alert(currentLang==='fr'?"Panier vide !":"السلة فارغة !");
+      let msg = currentLang==='fr' ? `*Commande JosephChef - ${selectedCity}*\n\n` : `*طلبية جوزيف شيف - ${selectedCity}*\n\n`;
+      let total = 0;
+      cart.forEach(item => {
+        const name = currentLang==='fr' ? (item.fr || item.name) : (item.ar || item.name);
+        msg += `• ${name} : ${item.price || item.oldPrice} DA\n`;
+        total += item.price || item.oldPrice;
+      });
+      msg += `\n*${currentLang==='fr'?'Total':'المجموع'} : ${total.toLocaleString()} DA*\n\n${currentLang==='fr'?'Merci !':'شكرا على ثقتك'} 😋`;
+      window.open(`https://wa.me/213559306968?text=${encodeURIComponent(msg)}`, "_blank");
+    }
+
+    // Init
+    updateTexts();
+    updateMenu();
+    updatePromos();
+  </script>
+</body>
+</html>
