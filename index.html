@@ -15,7 +15,7 @@
     .logo{font-size:2.5rem;font-weight:800;color:var(--p);}
     .cart-icon{font-size:1.8rem;position:relative;cursor:pointer;}
     .cart-count{position:absolute;top:-10px;right:-10px;background:var(--p);color:#fff;width:22px;height:22px;border-radius:50%;font-size:.8rem;display:flex;align-items:center;justify-content:center;}
-    .hero{background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url('https://i.imgur.com/8z8K8gP.jpg') center/cover;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;}
+    .hero{background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url('https://i.ibb.co/6nY6YvP/hero.jpg') center/cover;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;}
     .hero h1{font-size:5rem;} .hero p{font-size:1.9rem;margin:1rem 0;}
     .btn{background:var(--p);color:#fff;padding:1rem 3rem;border-radius:50px;font-size:1.5rem;font-weight:600;cursor:pointer;}
     .btn:hover{background:#c1121f;}
@@ -91,58 +91,58 @@
 
   <script>
     const menuItems = [
-      {fr:"Burger Classic",ar:"برغر كلاسيك",price:850,img:"https://i.imgur.com/0n6Z8pB.jpg"},
-      {fr:"Double Cheese",ar:"دبل شيز",price:1200,img:"https://i.imgur.com/5eR8K9m.jpg"},
-      {fr:"Tacos Algérien",ar:"تاكوس جزايري",price:900,img:"https://i.imgur.com/Q8vZ9kX.jpg"},
-      {fr:"Tacos 3 Viandes",ar:"تاكوس 3 لحوم",price:1300,img:"https://i.imgur.com/3vL9mKp.jpg"},
-      {fr:"Panini Escalope",ar:"بانيني اسكالوب",price:800,img:"https://i.imgur.com/9pR7vJc.jpg"},
-      {fr:"Frites + Sauce",ar:"بطاطس مع صلصة",price:350,img:"https://i.imgur.com/L8kM2vN.jpg"},
-      {fr:"Menu Enfant + Hamoud",ar:"منيو طفل + حمود",price:950,img:"https://i.imgur.com/X7kP9mL.jpg"},
-      {fr:"Hamoud Boualem 1.5L",ar:"حمود بوعلام 1.5ل",price:250,img:"https://i.imgur.com/8jF6gH2.jpg"}
+      {fr:"Burger Joseph Classic",ar:"برغر جوزيف",price:850,img:"https://i.ibb.co/6nY6YvP/burger.jpg"},
+      {fr:"Double Cheese Burger",ar:"دبل شيز برغر",price:1200,img:"https://i.ibb.co/4pK7v9m/double-cheese.jpg"},
+      {fr:"Tacos Algérien",ar:"تاكوس جزايري",price:900,img:"https://i.ibb.co/4pQ8YkM/tacos-algerien.jpg"},
+      {fr:"Tacos 3 Viandes",ar:"تاكوس 3 لحوم",price:1300,img:"https://i.ibb.co/3vL9mKp/tacos-3viandes.jpg"},
+      {fr:"Panini Escalope",ar:"بانيني اسكالوب",price:800,img:"https://i.ibb.co/9pR7vJc/panini-escalope.jpg"},
+      {fr:"Frites + Sauce Algérienne",ar:"بطاطس مع الصلصة",price:350,img:"https://i.ibb.co/L8kM2vN/frites-sauce.jpg"},
+      {fr:"Menu Enfant + Hamoud",ar:"منيو طفل + حمود",price:950,img:"https://i.ibb.co/X7kP9mL/menu-enfant-hamoud.jpg"},
+      {fr:"Hamoud Boualem 1.5L",ar:"حمود بوعلام 1.5ل",price:250,img:"https://i.ibb.co/8jF6gH2/hamoud.jpg"}
     ];
 
     const promos = [
-      {fr:"Tacos Algérien",ar:"تاكوس جزايري",oldPrice:900,price:750,img:"https://i.imgur.com/Q8vZ9kX.jpg"},
-      {fr:"Menu Enfant + Hamoud",ar:"منيو طفل + حمود",oldPrice:950,price:799,img:"https://i.imgur.com/X7kP9mL.jpg"}
+      {fr:"Tacos Algérien",ar:"تاكوس جزايري",oldPrice:900,price:750,img:"https://i.ibb.co/4pQ8YkM/tacos-algerien.jpg"},
+      {fr:"Menu Enfant + Hamoud",ar:"منيو طفل + حمود",oldPrice:950,price:799,img:"https://i.ibb.co/X7kP9mL/menu-enfant-hamoud.jpg"}
     ];
 
     let lang='fr', cart=[], city="Gouraya";
 
-    function upd(){
-      document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-lang]').forEach(x=>x.classList.remove('active'));b.classList.add('active');render();});
-      document.querySelectorAll('[data-theme]').forEach(b=>b.onclick=()=>{document.body.dataset.theme=b.dataset.theme;document.querySelectorAll('[data-theme]').forEach(x=>x.classList.remove('active'));b.classList.add('active');});
-      document.querySelectorAll('.city-btn').forEach(b=>b.onclick=()=>{document.querySelectorAll('.city-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');city=b.textContent.trim();});
-      render();
-    }
-
     function render(){
-      let m=''; menuItems.forEach((i,x)=>{m+=`<div class="card"><img src="${i.img}" alt=""><div style="padding:1.5rem;"><h3>${lang==='fr'?i.fr:i.ar}</h3><div class="price">${i.price} DA</div><button class="btn" onclick="add(${x})" style="width:100%;margin-top:1rem;">${lang==='fr'?'Ajouter':'اضف'}</button></div></div>`;}); 
-      document.getElementById('menu-grid').innerHTML=m;
+      let html = ''; menuItems.forEach((i,x)=>{html+=`<div class="card"><img src="${i.img}" alt="${i.fr}"><div style="padding:1.5rem;"><h3>${lang==='fr'?i.fr:i.ar}</h3><div class="price">${i.price} DA</div><button class="btn" onclick="add(${x})" style="width:100%;margin-top:1rem;">${lang==='fr'?'Ajouter':'اضف'}</button></div></div>`;});
+      document.getElementById('menu-grid').innerHTML = html;
 
-      let p=''; promos.forEach((i,x)=>{p+=`<div class="card"><img src="${i.img}" alt=""><div style="padding:1.5rem;"><h3>${lang==='fr'?i.fr:i.ar} <span class="promo-badge">PROMO</span></h3><div class="price"><span class="old-price">${i.oldPrice} DA</span> ${i.price} DA</div><button class="btn" onclick="addPromo(${x})" style="width:100%;margin-top:1rem;background:#28a745;">${lang==='fr'?'Ajouter Promo':'اضف العرض'}</button></div></div>`;});
-      document.getElementById('promos-grid').innerHTML=p;
+      let promoHtml = ''; promos.forEach((i,x)=>{promoHtml+=`<div class="card"><img src="${i.img}" alt=""><div style="padding:1.5rem;"><h3>${lang==='fr'?i.fr:i.ar} <span class="promo-badge">PROMO</span></h3><div class="price"><span class="old-price">${i.oldPrice} DA</span> ${i.price} DA</div><button class="btn" onclick="addPromo(${x})" style="width:100%;margin-top:1rem;background:#28a745;">${lang==='fr'?'Ajouter Promo':'اضف العرض'}</button></div></div>`;});
+      document.getElementById('promos-grid').innerHTML = promoHtml;
     }
 
-    function add(x){cart.push(menuItems[x]);updcart();}
-    function addPromo(x){cart.push({...promos[x],price:promos[x].price});updcart();}
-    function updcart(){
-      let items=''; let tot=0;
-      cart.forEach((i,x)=>{tot+=i.price; items+=`<div style="display:flex;justify-content:space-between;padding:1rem 0;border-bottom:1px solid #ddd;"><div><strong>${lang==='fr'?i.fr:i.ar}</strong><br>${i.price} DA</div><button onclick="cart.splice(${x},1);updcart()" style="background:none;border:none;color:red;font-size:1.8rem;">×</button></div>`;});
-      document.getElementById('cart-items').innerHTML=items||'<p style="text-align:center;color:#999;">Panier vide</p>';
-      document.querySelector('.cart-count').textContent=cart.length;
-      document.getElementById('cart-total').textContent=tot;
+    function add(x){cart.push(menuItems[x]); updateCart();}
+    function addPromo(x){cart.push({...promos[x], price:promos[x].price}); updateCart();}
+    function updateCart(){
+      let items=''; let total=0;
+      cart.forEach((i,x)=>{total+=i.price; items+=`<div style="display:flex;justify-content:space-between;padding:1rem 0;border-bottom:1px solid #eee;"><div><strong>${lang==='fr'?i.fr:i.ar}</strong><br>${i.price} DA</div><button onclick="cart.splice(${x},1);updateCart()" style="background:none;border:none;color:red;font-size:1.8rem;">×</button></div>`;});
+      document.getElementById('cart-items').innerHTML = items || '<p style="text-align:center;color:#aaa;">Panier vide</p>';
+      document.querySelector('.cart-count').textContent = cart.length;
+      document.getElementById('cart-total').textContent = total;
     }
 
     function toggleCart(){document.getElementById('cart').classList.toggle('open');}
     function checkout(){
-      if(!cart.length) return alert('Panier vide !');
-      let msg=`*Commande JosephChef - ${city}*\n\n`;
-      let tot=0; cart.forEach(i=>{msg+=`• ${lang==='fr'?i.fr:i.ar} : ${i.price} DA\n`; tot+=i.price;});
-      msg+=`\n*Total : ${tot} DA*\nشكرا`;
-      open(`https://wa.me/213559306968?text=${encodeURIComponent(msg)}`,'_blank');
+      if(cart.length===0) return alert('Panier vide !');
+      let msg = `*Commande JosephChef - ${city}*\n\n`;
+      let total=0; cart.forEach(i=>{msg+=`• ${lang==='fr'?i.fr:i.ar} : ${i.price} DA\n`; total+=i.price;});
+      msg+=`\n*Total : ${total} DA*\nشكرا 😋`;
+      window.open('https://wa.me/213559306968?text='+encodeURIComponent(msg));
     }
 
-    upd();
+    document.querySelectorAll('[data-lang]')[0].onclick=()=>{lang='fr';document.documentElement.lang='fr';document.documentElement.dir='ltr';document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang==='fr'));render();}
+    document.querySelectorAll('[data-lang]')[1].onclick=()=>{lang='ar';document.documentElement.lang='ar';document.documentElement.dir='rtl';document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang==='ar'));render();}
+    document.querySelectorAll('[data-theme]')[0].onclick=()=>{document.body.dataset.theme='light';document.querySelectorAll('[data-theme]').forEach(b=>b.classList.toggle('active',b.dataset.theme==='light'));}
+    document.querySelectorAll('[data-theme]')[1].onclick=()=>{document.body.dataset.theme='dark';document.querySelectorAll('[data-theme]').forEach(b=>b.classList.toggle('active',b.dataset.theme==='dark'));}
+    document.querySelectorAll('.city-btn')[0].onclick=()=>{document.querySelectorAll('.city-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.city-btn')[0].classList.add('active');city="Gouraya";}
+    document.querySelectorAll('.city-btn')[1].onclick=()=>{document.querySelectorAll('.city-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.city-btn')[1].classList.add('active');city="Tipaza";}
+
+    render();
   </script>
 </body>
 </html>
