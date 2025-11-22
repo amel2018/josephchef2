@@ -7,40 +7,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Poppins','Cairo',sans-serif;background:#111;color:#fff;}
-    header{background:#e63946;padding:1rem 5%;position:fixed;top:0;width:100%;z-index:1000;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 20px rgba(0,0,0,.5);}
-    .logo{font-size:2.8rem;font-weight:900;}
-    .hero{background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.8)),url('https://i.ibb.co.com/8xYJ3cK/josephchef-hero-ia.jpg') center/cover;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
-    .hero h1{font-size:6rem;text-shadow:0 5px 15px rgba(0,0,0,.8);}
-    .hero p{font-size:2.2rem;margin:20px 0;}
-    .btn{background:#25d366;color:#fff;padding:20px 60px;border-radius:50px;font-size:2rem;font-weight:800;box-shadow:0 8px 25px rgba(37,211,102,.5);}
-    .section{padding:80px 5%;text-align:center;}
-    .title{font-size:3.5rem;margin-bottom:50px;color:#e63946;}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px;}
-    .card{background:#222;border-radius:25px;overflow:hidden;box-shadow:0 15px 35px rgba(0,0,0,.6);transition:.4s;}
-    .card:hover{transform:translateY(-20px);box-shadow:0 25px 50px rgba(230,57,70,.4);}
-    .card img{width:100%;height:280px;object-fit:cover;}
+    body{font-family:'Poppins','Cairo',sans-serif;background:#0d1b2a;color:#fff;}
+    header{background:#e63946;padding:1rem 5%;position:fixed;top:0;width:100%;z-index:1000;display:flex;justify-content:space-between;align-items:center;box-shadow:0 6px 20px rgba(0,0,0,.4);}
+    .logo-img{height:75px;width:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.6));}
+    .hero{background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.85)),url('https://files.catbox.moe/8x5r9t.jpg') center/cover;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
+    .hero h1{font-size:6rem;margin:20px 0;text-shadow:0 5px 20px #000;}
+    .hero p{font-size:2.2rem;margin-bottom:30px;}
+    .btn{background:#25d366;color:#fff;padding:20px 60px;border-radius:50px;font-size:2rem;font-weight:800;box-shadow:0 10px 30px rgba(37,211,102,.5);cursor:pointer;}
+    .section{padding:90px 5%;text-align:center;}
+    .title{font-size:3.8rem;margin-bottom:60px;color:#e63946;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:35px;}
+    .card{background:#1b263b;border-radius:25px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.5);transition:.4s;}
+    .card:hover{transform:translateY(-20px);box-shadow:0 30px 60px rgba(230,57,70,.4);}
+    .card img{width:100%;height:290px;object-fit:cover;}
     .card-body{padding:25px;}
-    .name{font-size:1.8rem;font-weight:700;margin-bottom:10px;}
-    .price{color:#e63946;font-size:2.5rem;font-weight:900;}
-    .old-price{text-decoration:line-through;color:#888;margin-left:10px;}
-    .add-btn{background:#e63946;color:#fff;border:none;padding:16px;border-radius:50px;width:100%;margin-top:15px;font-size:1.3rem;cursor:pointer;}
-    .promo .add-btn{background:#28a745;}
-    .cart{position:fixed;top:0;right:-100%;width:100%;max-width:420px;height:100vh;background:#111;box-shadow:-10px 0 40px rgba(0,0,0,.7);transition:.5s;z-index:2000;padding:2rem;overflow-y:auto;}
+    .name{font-size:1.9rem;font-weight:700;margin-bottom:12px;}
+    .price{color:#e63946;font-size:2.6rem;font-weight:900;}
+    .old-price{text-decoration:line-through;color:#999;margin-left:12px;font-size:1.8rem;}
+    .add{background:#e63946;color:#fff;border:none;padding:18px;border-radius:50px;width:100%;margin-top:15px;font-size:1.4rem;cursor:pointer;}
+    .add.promo{background:#28a745;}
+    .cart{position:fixed;top:0;right:-100%;width:100%;max-width:430px;height:100vh;background:#0d1b2a;box-shadow:-15px 0 50px rgba(0,0,0,.8);transition:.5s;z-index:2000;padding:30px;overflow-y:auto;}
     .cart.open{right:0;}
-    footer{background:#000;padding:50px;text-align:center;}
+    footer{background:#000;padding:60px 20px;text-align:center;}
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">Joseph<span style="color:#000;">Chef</span></div>
-    <div style="font-size:2.2rem;cursor:pointer;" onclick="toggleCart()">Cart</div>
+    <!-- TON LOGO OFFICIEL (barbu + toque + Joseph Chef) -->
+    <img src="https://files.catbox.moe/4w2q3m.png" alt="JosephChef Logo" class="logo-img">
+    <div style="font-size:2.3rem;cursor:pointer;" onclick="toggleCart()">Panier</div>
   </header>
 
   <div class="hero">
     <h1>JosephChef</h1>
-    <p>Pizza carrée 50 DA • Manchons 50 DA • Livraison rapide</p>
+    <p>Pizza carrée 50 DA • Manchons 50 DA • Livraison Gouraya & Tipaza</p>
     <div class="btn" onclick="window.location='#menu'">Commander maintenant</div>
   </div>
 
@@ -49,81 +50,72 @@
     <div class="grid" id="promos"></div>
   </div>
 
-  <div class="section" style="background:#1a1a1a;">
+  <div class="section" style="background:#1b263b;">
     <h2 class="title">Menu complet</h2>
     <div class="grid" id="menu"></div>
   </div>
 
   <div class="cart" id="cart">
-    <h2 style="font-size:2.5rem;margin-bottom:20px;">Panier</h2>
+    <h2 style="font-size:2.8rem;margin-bottom:30px;">Panier</h2>
     <div id="cartitems"></div>
-    <div style="margin:30px 0;font-size:2.2rem;color:#e63946;font-weight:900;">Total : <span id="total">0</span> DA</div>
+    <div style="margin:40px 0;font-size:2.5rem;color:#e63946;font-weight:900;">Total : <span id="total">0</span> DA</div>
     <div class="btn" onclick="checkout()">Commander WhatsApp</div>
-    <div class="btn" style="background:#999;margin-top:15px;" onclick="toggleCart()">Fermer</div>
+    <div class="btn" style="background:#777;margin-top:15px;" onclick="toggleCart()">Fermer</div>
   </div>
 
   <footer>
-    <h2>JosephChef</h2>
-    <p><strong>Gouraya</strong> : À côté de l’hôpital</p>
-    <p><strong>Tipaza</strong> : À côté de l’université</p>
-    <p style="font-size:2.5rem;margin:30px 0;">0559 30 69 68</p>
+    <p style="font-size:1.8rem;">
+      <strong>Gouraya</strong> : À côté de l’hôpital<br>
+      <strong>Tipaza</strong> : À côté de l’université
+    </p>
+    <p style="font-size:3rem;margin:30px 0;font-weight:900;">0559 30 69 68</p>
   </footer>
 
   <script>
     const items = [
-      {name:"Pizza Carrée DZ",price:50,img:"https://i.ibb.co.com/k7v9p2/pizza-carree-ia.jpg"},
-      {name:"Manchons de Poulet",price:50,img:"https://i.ibb.co.com/8jF6gH/manchons-ia.jpg"},
-      {name:"Pizza Marguerite",price:200,img:"https://i.ibb.co.com/3t2q8x/pizza-margherita-ia.jpg"},
-      {name:"Pizza Champignons",price:400,img:"https://i.ibb.co.com/9pL5mN/pizza-champignons-ia.jpg"},
-      {name:"Pizza 3 Fromages",price:450,img:"https://i.ibb.co.com/r4f7k2/pizza-3fromages-ia.jpg"},
-      {name:"Pizza Poulet",price:450,img:"https://i.ibb.co.com/h6g9v1/pizza-poulet-ia.jpg"},
-      {name:"Pizza Viande Hachée",price:450,img:"https://i.ibb.co.com/z3c8t5/pizza-kefta-ia.jpg"},
-      {name:"Tacos Algérien",price:900,img:"https://i.ibb.co.com/9y8v3k/tacos-algerien-ia.jpg"},
-      {name:"Burger Classic",price:850,img:"https://i.ibb.co.com/5kpjK8/burger-ia.jpg"},
-      {name:"Menu Enfant + Hamoud",price:950,img:"https://i.ibb.co.com/3x2v9p/menu-enfant-ia.jpg"}
+      {name:"Pizza Carrée DZ",price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
+      {name:"Manchons de Poulet",price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
+      {name:"Pizza Marguerite",price:200,img:"https://files.catbox.moe/3t2q8x.jpg"},
+      {name:"Pizza Champignons",price:400,img:"https://files.catbox.moe/9pL5mN.jpg"},
+      {name:"Pizza 3 Fromages",price:450,img:"https://files.catbox.moe/r4f7k2.jpg"},
+      {name:"Pizza Poulet",price:450,img:"https://files.catbox.moe/h6g9v1.jpg"},
+      {name:"Pizza Viande Hachée",price:450,img:"https://files.catbox.moe/z3c8t5.jpg"},
+      {name:"Tacos Algérien",price:900,img:"https://files.catbox.moe/9y8v3k.jpg"},
+      {name:"Burger Classic",price:850,img:"https://files.catbox.moe/5kpjK8.jpg"}
     ];
 
     const promos = [
-      {name:"Pizza Carrée DZ",old:150,price:50,img:"https://i.ibb.co.com/k7v9p2/pizza-carree-ia.jpg"},
-      {name:"Manchons",old:120,price:50,img:"https://i.ibb.co.com/8jF6gH/manchons-ia.jpg"},
-      {name:"Pizza Marguerite",old:350,price:200,img:"https://i.ibb.co.com/3t2q8x/pizza-margherita-ia.jpg"}
+      {name:"Pizza Carrée DZ",old:150,price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
+      {name:"Manchons",old:120,price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
+      {name:"Pizza Marguerite",old:350,price:200,img:"https://files.catbox.moe/3t2q8x.jpg"}
     ];
 
     let cart = [];
 
+    function render();
     function render(){
       document.getElementById('menu').innerHTML = items.map((i,x)=>`
-        <div class="card">
-          <img src="${i.img}" alt="${i.name}">
-          <div class="card-body">
-            <div class="name">${i.name}</div>
-            <div class="price">${i.price} DA</div>
-            <button class="add-btn" onclick="add(${x})">Ajouter</button>
-          </div>
-        </div>`).join('');
+        <div class="card"><img src="${i.img}">
+          <div class="card-body"><div class="name">${i.name}</div>
+          <div class="price">${i.price} DA</div>
+          <button class="add" onclick="add(${x})">Ajouter</button></div></div>`).join('');
 
       document.getElementById('promos').innerHTML = promos.map((i,x)=>`
-        <div class="card">
-          <img src="${i.img}" alt="${i.name}">
-          <div class="card-body">
-            <div class="name">${i.name} <span style="background:#28a745;color:#fff;padding:8px 15px;border-radius:20px;">PROMO</span></div>
-            <div><span class="old-price">${i.old} DA</span> <span class="price">${i.price} DA</span></div>
-            <button class="add-btn promo" onclick="addPromo(${x})">Ajouter Promo</button>
-          </div>
-        </div>`).join('');
+        <div class="card"><img src="${i.img}">
+          <div class="card-body"><div class="name">${i.name} PROMO</div>
+          <div><span class="old-price">${i.old} DA</span> <span class="price">${i.price} DA</span></div>
+          <button class="add promo" onclick="addPromo(${x})">Ajouter Promo</button></div></div>`).join('');
     }
 
     function add(x){ cart.push(items[x]); update(); }
     function addPromo(x){ cart.push({...promos[x],price:promos[x].price}); update(); }
     function update(){
-      let html=''; let t=0;
-      cart.forEach((i,x)=>{ t+=i.price; html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid #333;">
+      let h=''; let t=0;
+      cart.forEach((i,x)=>{ t+=i.price; h+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid #333;">
         <div><b>${i.name}</b><br>${i.price} DA</div>
-        <button style="background:none;border:none;color:#e63946;font-size:2rem;" onclick="cart.splice(${x},1);update()">×</button>
-      </div>`; });
-      document.getElementById('cartitems').innerHTML = html || '<p style="color:#666;text-align:center;">Panier vide</p>';
+        <button style="background:none;border:none;color:#e63946;font-size:2.5rem;" onclick="cart.splice(${x},1);update()">×</button></div>`; });
+      document.getElementById('cartitems').innerHTML = h||'<p style="color:#555">Panier vide</p>';
       document.getElementById('total').textContent = t;
-      document.querySelector('.cart-icon > div').textContent = 'Cart'+(cart.length?` (${cart.length})`:'');
     }
 
     function toggleCart(){ document.getElementById('cart').classList.toggle('open'); }
@@ -131,11 +123,9 @@
       if(!cart.length) return alert("Panier vide !");
       let msg="*Commande JosephChef*\n\n";
       let t=0; cart.forEach(i=>{ msg+=`• ${i.name} : ${i.price} DA\n`; t+=i.price; });
-      msg+=`\n*Total : ${t} DA*\nMerci !`;
+      msg+=`\n*Total : ${t} DA*\nMerci frère !`;
       open('https://wa.me/213559306968?text='+encodeURIComponent(msg));
     }
-
-    render();
   </script>
 </body>
 </html>
