@@ -3,148 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JosephChef - جوزيف شيف</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+  <title>JosephChef - Gouraya & Tipaza</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
   <style>
-    :root{--red:#e63946;--dark:#0d1b2a;--green:#25d366;}
+    :root{--red:#e63946;--green:#25d366;--dark:#0a0e17;--card:#1b263b;}
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Poppins','Cairo',sans-serif;background:var(--dark);color:#fff;transition:.3s;}
-    header{background:var(--red);padding:15px 5%;position:fixed;top:0;width:100%;z-index:1000;display:flex;justify-content:space-between;align-items:center;box-shadow:0 5px 20px rgba(0,0,0,.5);}
-    .logo-img{height:85px;width:auto;}
-    .lang-switch{position:fixed;top:15px;right:15px;z-index:1001;background:#000;border-radius:50px;padding:5px;display:flex;}
-    .lang-btn{padding:8px 15px;color:#fff;font-weight:700;border-radius:50px;cursor:pointer;}
-    .lang-btn.active{background:var(--red);}
-    .hero{background:linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.85)),url('https://files.catbox.moe/8x5r9t.jpg') center/cover no-repeat;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
-    .hero h1{font-size:5.5rem;margin:20px 0;text-shadow:0 5px 20px #000;}
-    .hero p{font-size:2rem;}
-    .btn{background:var(--green);color:#fff;padding:18px 55px;border-radius:50px;font-size:1.9rem;font-weight:800;cursor:pointer;box-shadow:0 8px 25px rgba(37,211,102,.5);}
-    .section{padding:80px 5%;text-align:center;}
-    .title{font-size:3.5rem;margin-bottom:50px;color:var(--red);}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
-    .card{background:#1b263b;border-radius:25px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.6);transition:.4s;}
-    .card:hover{transform:translateY(-15px);}
+    body{font-family:'Cairo','Poppins',sans-serif;background:var(--dark);color:#fff;}
+    header{background:var(--red);padding:15px 5%;position:fixed;top:0;width:100%;z-index:1000;display:flex;justify-content:space-between;align-items:center;box-shadow:0 6px 25px rgba(0,0,0,.8);}
+    .logo-img{height:92px;filter:drop-shadow(0 4px 10px #000);}
+    .lang{position:fixed;top:15px;right:15px;z-index:1001;background:rgba(0,0,0,.8);padding:6px;border-radius:50px;display:flex;}
+    .lang button{padding:10px 18px;background:transparent;color:#fff;border:none;font-weight:900;border-radius:50px;cursor:pointer;}
+    .lang button.active{background:var(--red);}
+    .hero{background:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('https://files.catbox.moe/8x5r9t.jpg') center/cover fixed;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
+    .hero h1{font-size:6.8rem;font-weight:900;text-shadow:0 8px 30px #000;}
+    .hero p{font-size:2.4rem;margin:25px 0;}
+    .btn{background:var(--green);color:#fff;padding:22px 75px;border-radius:50px;font-size:2.3rem;font-weight:900;cursor:pointer;box-shadow:0 12px 35px rgba(37,211,102,.6);}
+    .section{padding:100px 5%;text-align:center;}
+    .title{font-size:4.2rem;margin-bottom:70px;color:var(--red);}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:35px;}
+    .card{background:var(--card);border-radius:30px;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.7);transition:.4s;position:relative;}
+    .card:hover{transform:translateY(-20px);}
     .card img{width:100%;height:270px;object-fit:cover;}
-    .card-body{padding:20px;}
-    .name{font-size:1.8rem;font-weight:700;}
-    .price{color:var(--red);font-size:2.4rem;font-weight:900;}
-    .old-price{text-decoration:line-through;color:#999;margin-left:10px;}
-    .add{background:var(--red);color:#fff;border:none;padding:15px;border-radius:50px;width:100%;margin-top:12px;font-size:1.3rem;cursor:pointer;}
+    .card-body{padding:25px;}
+    .name{font-size:2rem;font-weight:900;margin-bottom:10px;}
+    .desc{font-size:1.15rem;color:#ddd;line-height:1.6;margin-bottom:15px;}
+    .price{color:var(--red);font-size:2.8rem;font-weight:900;}
+    .old-price{text-decoration:line-through;color:#999;margin-left:12px;font-size:1.8rem;}
+    .add{background:var(--red);color:#fff;border:none;padding:18px;border-radius:50px;width:100%;margin-top:15px;font-size:1.5rem;font-weight:700;cursor:pointer;}
     .add.promo{background:#28a745;}
-    .cart{position:fixed;top:0;right:-100%;width:100%;max-width:420px;height:100vh;background:var(--dark);box-shadow:-10px 0 40px rgba(0,0,0,.8);transition:.5s;z-index:999;padding:30px;overflow-y:auto;}
+    .badge{position:absolute;top:15px;left:15px;background:#28a745;color:#fff;padding:10px 18px;border-radius:25px;font-weight:900;z-index:10;}
+    .cart{position:fixed;top:0;right:-100%;width:100%;max-width:450px;height:100vh;background:var(--dark);box-shadow:-15px 0 60px rgba(0,0,0,.9);transition:.5s;z-index:999;padding:35px;overflow-y:auto;}
     .cart.open{right:0;}
-    footer{background:#000;padding:50px;text-align:center;}
-    [dir="rtl"]{text-align:right;}
-    [dir="rtl"] .cart{right:auto;left:-100%;}
-    [dir="rtl"] .cart.open{left:0;right:auto;}
+    footer{background:#000;padding:70px;text-align:center;}
   </style>
 </head>
 <body>
 
-  <div class="lang-switch">
-    <div class="lang-btn active" data-lang="fr">FR</div>
-    <div class="lang-btn" data-lang="ar">عربي</div>
+  <div class="lang">
+    <button class="active" data-lang="fr">FR</button>
+    <button data-lang="ar">عربي</button>
   </div>
 
   <header>
     <img src="https://files.catbox.moe/4w2q3m.png" alt="JosephChef" class="logo-img">
-    <div style="font-size:2rem;cursor:pointer;" onclick="toggleCart()">Panier</div>
+    <div style="font-size:2.5rem;cursor:pointer;" onclick="toggleCart()">Panier</div>
   </header>
 
   <div class="hero">
     <h1>JosephChef</h1>
-    <p data-fr="Pizza carrée 50 DA • Manchons 50 DA • Livraison Gouraya & Tipaza" data-ar="بيتزا مربعة 50 دج • منشون 50 دج • توصيل ڨوراية وتيبازة">Pizza carrée 50 DA • Manchons 50 DA • Livraison Gouraya & Tipaza</p>
+    <p>Manchons au fromage 50 DA • Burger 300 DA • Livraison Gouraya & Tipaza</p>
     <div class="btn" onclick="window.location='#menu'">Commander maintenant</div>
   </div>
 
   <div class="section">
-    <h2 class="title" data-fr="Promotions du jour" data-ar="العروض اليومية">Promotions du jour</h2>
+    <h2 class="title">Promotions du jour</h2>
     <div class="grid" id="promos"></div>
   </div>
 
   <div class="section" style="background:#1b263b;">
-    <h2 class="title" data-fr="Menu complet" data-ar="المنيو الكامل">Menu complet</h2>
+    <h2 class="title">Menu complet</h2>
     <div class="grid" id="menu"></div>
   </div>
 
   <div class="cart" id="cart">
-    <h2 data-fr="Panier" data-ar="السلة">Panier</h2>
+    <h2 style="font-size:3.2rem;margin-bottom:35px;">Panier</h2>
     <div id="cartitems"></div>
-    <div style="margin:30px 0;font-size:2.3rem;color:var(--red);font-weight:900;">Total : <span id="total">0</span> DA</div>
-    <div class="btn" onclick="checkout()">WhatsApp</div>
-    <div class="btn" style="background:#777;margin-top:15px;" onclick="toggleCart()">Fermer</div>
+    <div style="margin:50px 0;font-size:3rem;color:var(--red);font-weight:900;">Total : <span id="total">0</span> DA</div>
+    <div class="btn" onclick="checkout()">Commander WhatsApp</div>
+    <div class="btn" style="background:#666;margin-top:20px;" onclick="toggleCart()">Fermer</div>
   </div>
 
   <footer>
-    <p><strong>Gouraya</strong> : À côté de l’hôpital | <strong>Tipaza</strong> : À côté de l’université</p>
-    <p style="font-size:3rem;margin:30px 0;">0559 30 69 68</p>
+    <p style="font-size:2.1rem;"><strong>Gouraya</strong> : À côté de l’hôpital | <strong>Tipaza</strong> : À côté de l’université</p>
+    <p style="font-size:3.8rem;margin:35px 0;font-weight:900;">0559 30 69 68</p>
   </footer>
 
   <script>
-    const items = [
-      {fr:"Pizza Carrée DZ",ar:"بيتزا مربعة",price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
-      {fr:"Manchons de Poulet",ar:"منشون دجاج",price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
-      {fr:"Pizza Marguerite",ar:"بيتزا مارغريتا",price:200,img:"https://files.catbox.moe/3t2q8x.jpg"},
-      {fr:"Pizza Champignons",ar:"بيتزا فطر",price:400,img:"https://files.catbox.moe/9pL5mN.jpg"},
-      {fr:"Pizza 3 Fromages",ar:"بيتزا 3 جبنات",price:450,img:"https://files.catbox.moe/r4f7k2.jpg"},
-      {fr:"Pizza Poulet",ar:"بيتزا دجاج",price:450,img:"https://files.catbox.moe/h6g9v1.jpg"},
-      {fr:"Pizza Viande Hachée",ar:"بيتزا كفتة",price:450,img:"https://files.catbox.moe/z3c8t5.jpg"},
-      {fr:"Tacos Algérien",ar:"تاكوس جزايري",price:900,img:"https://files.catbox.moe/9y8v3k.jpg"},
-      {fr:"Burger Classic",ar:"برغر كلاسيك",price:850,img:"https://files.catbox.moe/5kpjK8.jpg"}
+    const menu = [
+      {fr:"Pizza Carrée Algérienne",ar:"بيتزا مربعة جزايرية",desc:"Sauce algérienne, fromage fondu, olives",price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
+      {fr:"Manchons au Fromage (6 pcs)",ar:"منشون بالجبن 6 قطع",desc:"Manchons frits + fromage fondu dessus",price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
+      {fr:"Burger Classic",ar:"برغر كلاسيك",desc:"Steak 100% bœuf, cheddar, sauce maison",price:300,img:"https://files.catbox.moe/5kpjK8.jpg"},
+      {fr:"Double Cheese Burger",ar:"دبل تشيز برغر",desc:"Double steak, double fromage",price:300,img:"https://files.catbox.moe/4pQ8YkM.jpg"},
+      {fr:"Pizza Marguerite",ar:"بيتزا مارغريتا",desc:"Tomate fraîche, mozzarella, basilic",price:200,img:"https://files.catbox.moe/3t2q8x.jpg"},
+      {fr:"Pizza Champignons",ar:"بيتزا فطر",desc:"Champignons frais, crème légère",price:400,img:"https://files.catbox.moe/9pL5mN.jpg"},
+      {fr:"Pizza 3 Fromages",ar:"بيتزا 3 جبنات",desc:"Mozzarella, cheddar, emmental",price:450,img:"https://files.catbox.moe/r4f7k2.jpg"},
+      {fr:"Pizza Poulet",ar:"بيتزا دجاج",desc:"Poulet grillé, oignons, poivrons",price:450,img:"https://files.catbox.moe/h6g9v1.jpg"},
+      {fr:"Pizza Viande Hachée",ar:"بيتزا كفتة",desc:"Viande hachée épicée, sauce algérienne",price:450,img:"https://files.catbox.moe/z3c8t5.jpg"},
+      {fr:"Tacos Algérien",ar:"تاكوس جزايري",desc:"Sauce algérienne, frites dedans, fromage",price:750,img:"https://files.catbox.moe/9y8v3k.jpg"},
+      {fr:"Tacos 3 Viandes",ar:"تاكوس 3 لحوم",desc:"Poulet + viande + merguez",price:1300,img:"https://files.catbox.moe/3vL9mKp.jpg"},
+      {fr:"Panini Escalope",ar:"بانيني اسكالوب",desc:"Escalope panée, fromage fondu",price:800,img:"https://files.catbox.moe/9pR7vJc.jpg"},
+      {fr:"Frites + Sauce Algérienne",ar:"بطاطس + صلصة",desc:"Grande portion bien chargée",price:350,img:"https://files.catbox.moe/L8kM2v.jpg"},
+      {fr:"Menu Enfant + Hamoud",ar:"منيو طفل + حمود",desc:"Mini burger + frites + boisson",price:950,img:"https://files.catbox.moe/3x2v9p.jpg"},
+      {fr:"Hamoud Boualem 1.5L",ar:"حمود 1.5ل",desc:"Bien froid",price:250,img:"https://files.catbox.moe/0yQ8Yk3M.jpg"}
     ];
 
     const promos = [
       {fr:"Pizza Carrée DZ",ar:"بيتزا مربعة",old:150,price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
-      {fr:"Manchons",ar:"منشون",old:120,price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
+      {fr:"Manchons au Fromage",ar:"منشون بالجبن",old:120,price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
+      {fr:"Burger Classic",ar:"برغر كلاسيك",old:600,price:300,img:"https://files.catbox.moe/5kpjK8.jpg"},
       {fr:"Pizza Marguerite",ar:"مارغريتا",old:350,price:200,img:"https://files.catbox.moe/3t2q8x.jpg"}
     ];
 
     let cart = [], lang = 'fr';
 
     function render(){
-      const menuHtml = items.map((i,x)=>`
+      document.getElementById('menu').innerHTML = menu.map((i,x)=>`
         <div class="card"><img src="${i.img}" loading="lazy">
-          <div class="card-body"><div class="name">${lang==='fr'?i.fr:i.ar}</div>
-          <div class="price">${i.price} DA</div>
-          <button class="add" onclick="add(${x})">Ajouter</button></div></div>`).join('');
-      document.getElementById('menu').innerHTML = menuHtml;
+          <div class="card-body">
+            <div class="name">${lang==='fr'?i.fr:i.ar}</div>
+            <div class="desc">${i.desc}</div>
+            <div class="price">${i.price} DA</div>
+            <button class="add" onclick="add(${x})">Ajouter</button>
+          </div>
+        </div>`).join('');
 
-      const promoHtml = promos.map((i,x)=>`
-        <div class="card"><img src="${i.img}" loading="lazy">
-          <div class="card-body"><div class="name">${lang==='fr'?i.fr:i.ar} PROMO</div>
-          <div><span class="old-price">${i.old} DA</span> <span class="price">${i.price} DA</span></div>
-          <button class="add promo" onclick="addPromo(${x})">Ajouter Promo</button></div></div>`).join('');
-      document.getElementById('promos').innerHTML = promoHtml;
+      document.getElementById('promos').innerHTML = promos.map((i,x)=>`
+        <div class="card"><div class="badge">PROMO</div><img src="${i.img}" loading="lazy">
+          <div class="card-body">
+            <div class="name">${lang==='fr'?i.fr:i.ar}</div>
+            <div><span class="old-price">${i.old} DA</span> <span class="price">${i.price} DA</span></div>
+            <button class="add promo" onclick="addPromo(${x})">Ajouter Promo</button>
+          </div>
+        </div>`).join('');
     }
 
     document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>{
       lang = b.dataset.lang;
-      document.documentElement.lang = lang;
       document.documentElement.dir = lang==='ar'?'rtl':'ltr';
-      document.querySelectorAll('.lang-btn').forEach(x=>x.classList.toggle('active',x.dataset.lang===lang));
-      document.querySelector('[data-fr][data-ar]').textContent = b.closest('.lang-btn').nextElementSibling ? 
-        document.querySelector('[data-fr][data-ar]').dataset.ar : 
-        document.querySelector('[data-fr][data-ar]').dataset.fr;
-      document.querySelectorAll('[data-fr][data-ar]').forEach(el=>el.textContent = lang==='fr'?el.dataset.fr:el.dataset.ar);
-      render(); update();
+      document.querySelectorAll('.lang button').forEach(btn=>btn.classList.toggle('active', btn.dataset.lang===lang));
+      render(); updateCart();
     });
 
-    function add(x){ cart.push(items[x]); update(); }
-    function addPromo(x){ cart.push({...promos[x],price:promos[x].price}); update(); }
-    function update(){
-      let h=''; let t=0;
-      cart.forEach((i,x)=>{ t+=i.price; h+=`<div style="display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid #444;">
-        <div><b>${lang==='fr'?(i.fr||i.name):(i.ar||i.name)}</b><br>${i.price} DA</div>
-        <button style="background:none;border:none;color:var(--red);font-size:2rem;" onclick="cart.splice(${x},1);update()">×</button></div>`; });
-      document.getElementById('cartitems').innerHTML = h||'<p style="color:#666;text-align:center;">Panier vide</p>';
-      document.getElementById('total').textContent = t;
+    function add(x){ cart.push(menu[x]); updateCart(); }
+    function addPromo(x){ cart.push({...promos[x], price:promos[x].price}); updateCart(); }
+
+    function updateCart(){
+      let html='', total=0;
+      cart.forEach((i,x)=>{ total+=i.price;
+        html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid #444;">
+          <div><b>${lang==='fr'?i.fr:i.ar}</b><br>${i.price} DA</div>
+          <button style="background:none;border:none;color:var(--red);font-size:2.8rem;" onclick="cart.splice(${x},1);updateCart()">×</button>
+        </div>`;
+      });
+      document.getElementById('cartitems').innerHTML = html || '<p style="text-align:center;color:#888;">Panier vide</p>';
+      document.getElementById('total').textContent = total;
     }
 
     function toggleCart(){ document.getElementById('cart').classList.toggle('open'); }
     function checkout(){
-      if(!cart.length) return alert("Panier vide !");
-      let msg="*Commande JosephChef*\n\n";
-      let t=0; cart.forEach(i=>{ msg+=`• ${lang==='fr'?(i.fr||i.name):(i.ar||i.name)} : ${i.price} DA\n`; t+=i.price; });
-      msg+=`\n*Total : ${t} DA*\nشكراً !`;
+      if(cart.length===0) return alert("Panier vide !");
+      let msg = `*Commande JosephChef*\n\n`;
+      let total=0;
+      cart.forEach(i=>{ msg+=`• ${lang==='fr'?i.fr:i.ar} : ${i.price} DA\n`; total+=i.price; });
+      msg+=`\n*Total : ${total} DA*\nشكراً على الثقة !`;
       open('https://wa.me/213559306968?text='+encodeURIComponent(msg));
     }
 
