@@ -3,48 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JosephChef - Fast Food Gouraya & Tipaza</title>
-  <meta name="description" content="Tacos algérien, Panini, Burger - Livraison Gouraya (près hôpital) & Tipaza (près université)"/>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Cairo:wght@400;600;800&family=Amiri:wght@700&display=swap" rel="stylesheet"/>
+  <title>JosephChef - Gouraya & Tipaza</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
   <style>
-    :root{--primary:#e63946;--dark:#1d3557;--light:#f1faee;--text:#333;--bg:#fff;}
-    [data-theme="dark"]{--dark:#f1faee;--light:#1d3557;--text:#f1faee;--bg:#1a1a1a;}
+    :root{--p:#e63946;--d:#1d3557;--l:#f1faee;--t:#333;--b:#fff;}
+    [data-theme="dark"]{--d:#f1faee;--l:#1d3557;--t:#f1faee;--b:#1a1a1a;}
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Poppins','Cairo',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;transition:all .3s;}
-    header{background:var(--dark);color:white;position:fixed;width:100%;top:0;z-index:1000;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.2);}
-    .logo{font-size:2.4rem;font-weight:800;color:var(--primary);}
+    body{font-family:'Poppins','Cairo',sans-serif;background:var(--b);color:var(--t);transition:all .3s;}
+    header{background:var(--d);color:white;position:fixed;width:100%;top:0;z-index:1000;padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.2);}
+    .logo{font-size:2.4rem;font-weight:800;color:var(--p);}
     .cart-icon{font-size:1.6rem;position:relative;cursor:pointer;}
-    .cart-count{position:absolute;top:-8px;right:-10px;background:var(--primary);color:white;font-size:.8rem;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
-    .hero{background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url('https://images.pexels.com/photos/1639556/pexels-photo-1639556.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');background-size:cover;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:white;margin-top:70px;}
-    .hero h1{font-size:5rem;}
-    .btn{background:var(--primary);color:white;padding:1rem 3rem;border-radius:50px;font-size:1.4rem;font-weight:600;}
+    .cart-count{position:absolute;top:-8px;right:-10px;background:var(--p);color:white;width:20px;height:20px;border-radius:50%;font-size:.8rem;display:flex;align-items:center;justify-content:center;}
+    .hero{background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url('https://i.postimg.cc/3x3T3YkP/hero-josephchef.jpg') center/cover no-repeat;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:white;margin-top:70px;}
+    .hero h1{font-size:5rem;} .hero p{font-size:1.8rem;margin:1rem 0;}
+    .btn{background:var(--p);color:white;padding:1rem 3rem;border-radius:50px;font-size:1.4rem;font-weight:600;cursor:pointer;}
     .btn:hover{background:#c1121f;transform:scale(1.05);}
-    .city-select{background:var(--dark);padding:3rem;text-align:center;color:white;}
-    .city-btn{background:transparent;border:2px solid var(--primary);color:white;padding:1rem 2.5rem;margin:0 1rem;border-radius:50px;font-size:1.3rem;cursor:pointer;}
-    .city-btn.active,.city-btn:hover{background:var(--primary);}
-    .menu{padding:5rem 5%;background:var(--light);}
-    .section-title{text-align:center;font-size:3rem;margin-bottom:3rem;color:var(--dark);}
+    .city-select{background:var(--d);padding:3rem;text-align:center;color:white;}
+    .city-btn{background:transparent;border:2px solid var(--p);color:white;padding:1rem 2.5rem;margin:0 1rem;border-radius:50px;font-size:1.3rem;cursor:pointer;}
+    .city-btn.active,.674:hover{background:var(--p);}
+    .menu{padding:5rem 5%;background:var(--l);}
+    .section-title{text-align:center;font-size:3rem;margin-bottom:3rem;color:var(--d);}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;}
-    .card{background:var(--bg);border-radius:15px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.1);transition:.3s;}
+    .card{background:var(--b);border-radius:15px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.1);transition:.3s;}
     .card:hover{transform:translateY(-10px);}
     .card img{width:100%;height:240px;object-fit:cover;}
-    .price{font-size:1.9rem;color:var(--primary);font-weight:800;}
+    .price{font-size:1.9rem;color:var(--p);font-weight:800;}
     .old-price{text-decoration:line-through;color:#999;margin-left:10px;}
-    .promo-badge{background:#28a745;color:white;padding:5px 12px;border-radius:20px;font-size:.9rem;margin-left:10px;}
-    .cart{position:fixed;top:0;right:-400px;width:400px;height:100vh;background:var(--bg);box-shadow:-5px 0 15px rgba(0,0,0,.2);transition:.4s;z-index:2000;padding:2rem;overflow-y:auto;color:var(--text);}
+    .promo-badge{background:#28a745;color:white;padding:5px 12px;border-radius:20px;font-size:.9rem;}
+    .cart{position:fixed;top:0;right:-400px;width:400px;height:100vh;background:var(--b);box-shadow:-5px 0 15px rgba(0,0,0,.2);transition:.4s;z-index:2000;padding:2rem;overflow-y:auto;color:var(--t);}
     .cart.open{right:0;}
-    .checkout-btn{background:var(--primary);color:white;padding:1.2rem;width:100%;border:none;border-radius:50px;font-size:1.4rem;cursor:pointer;}
-    footer{background:var(--dark);color:white;padding:4rem 5% 2rem;text-align:center;}
+    footer{background:var(--d);color:white;padding:4rem 5% 2rem;text-align:center;}
     .switches{position:fixed;top:80px;right:20px;z-index:9999;display:flex;gap:10px;}
-    .switch{background:var(--dark);border-radius:50px;padding:8px;display:flex;}
+    .switch{background:var(--d);border-radius:50px;padding:8px;display:flex;}
     .switch-btn{padding:8px 15px;color:white;font-weight:bold;cursor:pointer;border-radius:50px;transition:.3s;}
-    .switch-btn.active{background:var(--primary);}
+    .switch-btn.active{background:var(--p);}
     html[lang="ar"]{direction:rtl;}
     html[lang="ar"] .cart{right:auto;left:-400px;box-shadow:5px 0 15px rgba(0,0,0,.2);}
-    html[lang="ar"] .cart.open{left:0;right:auto;}
+    html[lang="ar"] .cart.open{left:0;}
     html[lang="ar"] .switches{right:auto;left:20px;}
   </style>
 </head>
@@ -63,34 +59,26 @@
 
   <header>
     <div class="logo" data-tr="logo">Joseph<span style="color:white;">Chef</span></div>
-    <nav>
-      <a href="#menu" data-tr="menu">Menu</a>
-      <a href="#contact" data-tr="contact">Contact</a>
-      <a href="tel:+213559306968">0559 30 69 68</a>
-    </nav>
-    <div class="cart-icon" onclick="toggleCart()">
-      <i class="fas fa-shopping-cart"></i>
-      <span class="cart-count">0</span>
-    </div>
+    <div class="cart-icon" onclick="toggleCart()">Cart<span class="cart-count">0</span></div>
+  isometric>
   </header>
 
   <section class="hero">
     <h1 data-tr="title">JosephChef</h1>
-    <p data-tr="slogan">Tacos algérien, Burger, Panini - Le meilleur goût DZ !</p>
+    <p data-tr="slogan">Le meilleur tacos algérien de Gouraya & Tipaza !</p>
     <a href="#city" class="btn" data-tr="order_now">Commander maintenant</a>
   </section>
 
   <section id="city" class="city-select">
-    <h2 data-tr="city_question">Où veux-tu te faire livrer ?</h2>
-    <button class="city-btn active" data-city="gouraya" data-tr-city="gouraya">Gouraya</button>
-    <button class="city-btn" data-city="tipaza" data-tr-city="tipaza">Tipaza</button>
+    <h2 data-tr="city_question">Où livrer ?</h2>
+    <button class="city-btn active" data-tr-city="gouraya">Gouraya</button>
+    <button class="city-btn" data-tr-city="tipaza">Tipaza</button>
   </section>
 
-  <section id="menu" class="menu">
+  <section class="menu">
     <h2 class="section-title" data-tr="promos_title">Promotions du jour !</h2>
     <div class="grid" id="promos-grid"></div>
-
-    <h2 class="section-title" data-tr="our_menu" style="margin-top:5rem;">Notre Menu</h2>
+    <h2 class="section-title" data-tr="our_menu" style="margin-top:5rem;">Menu complet</h2>
     <div class="grid" id="menu-grid"></div>
   </section>
 
@@ -98,59 +86,54 @@
     <h2 data-tr="cart">Panier</h2>
     <div id="cart-items"></div>
     <div class="total" data-tr="total">Total : <span id="cart-total">0</span> DA</div>
-    <button class="checkout-btn" data-tr="checkout" onclick="checkout()">Commander via WhatsApp</button>
+    <button class="checkout-btn" data-tr="checkout" onclick="checkout()">Commander WhatsApp</button>
     <button style="margin-top:1rem;background:#999;" class="checkout-btn" onclick="toggleCart()" data-tr="close">Fermer</button>
   </div>
 
-  <footer id="contact">
+  <footer>
     <h2>JosephChef</h2>
     <p><strong data-tr="gouraya">Gouraya</strong> : <span data-tr="gouraya_loc">À côté de l’hôpital</span></p>
     <p><strong data-tr="tipaza">Tipaza</strong> : <span data-tr="tipaza_loc">À côté de l’université</span></p>
     <p>0559 30 69 68</p>
-    <div style="margin:2rem 0;font-size:2rem;">
-      <a href="https://facebook.com/josephchef" style="color:white;margin:0 15px;">Facebook</a>
-      <a href="https://instagram.com/josephchef" style="color:white;margin:0 15px;">Instagram</a>
-      <a href="https://wa.me/213559306968" style="color:white;margin:0 15px;">WhatsApp</a>
-    </div>
-    <p>&copy; 2025 JosephChef - Tous droits réservés</p>
+    <p>&copy; 2025 JosephChef</p>
   </footer>
 
   <script>
-    const translations = {
-      fr:{logo:"Joseph<span style='color:white;'>Chef</span>",title:"JosephChef",slogan:"Tacos algérien, Burger, Panini - Le meilleur goût DZ !",order_now:"Commander maintenant",city_question:"Où veux-tu te faire livrer ?",gouraya:"Gouraya",tipaza:"Tipaza",promos_title:"Promotions du jour !",our_menu:"Notre Menu",menu:"Menu",contact:"Contact",cart:"Panier",total:"Total : ",checkout:"Commander via WhatsApp",close:"Fermer",gouraya_loc:"À côté de l’hôpital",tipaza_loc:"À côté de l’université"},
-      ar:{logo:"جوزيف<span style='color:white;'>شيف</span>",title:"جوزيف شيف",slogan:"تاكوس جزايري، برغر، بانيني - أحسن ذوق في الجزاير !",order_now:"اطلب دحذا",city_question:"وين تبغي نوصلولك الطلبية؟",gouraya:"ڨوراية",tipaza:"تيبازة",promos_title:"العروض اليومية !",our_menu:"المنيو تاعنا",menu:"المنيو",contact:"تواصل معانا",cart:"السلة",total:"المجموع : ",checkout:"اطلب عبر الواتساب",close:"اغلق",gouraya_loc:"جنب المستشفى",tipaza_loc:"جنب الجامعة"}
+    const t = {
+      fr:{logo:"Joseph<span style='color:white;'>Chef</span>",title:"JosephChef",slogan:"Le meilleur tacos algérien de Gouraya & Tipaza !",order_now:"Commander maintenant",city_question:"Où livrer ?",gouraya:"Gouraya",tipaza:"Tipaza",promos_title:"Promotions du jour !",our_menu:"Menu complet",gouraya_loc:"À côté de l’hôpital",tipaza_loc:"À côté de l’université"},
+      ar:{logo:"جوزيف<span style='color:white;'>شيف</span>",title:"جوزيف شيف",slogan:"أحسن تاكوس جزايري في ڨوراية وتيبازة !",order_now:"اطلب دحذا",city_question:"وين نوصلولك ؟",gouraya:"ڨوراية",tipaza:"تيبازة",promos_title:"العروض اليومية !",our_menu:"المنيو كامل",gouraya_loc:"جنب المستشفى",tipaza_loc:"جنب الجامعة"}
     };
 
     const menuItems = [
-      {fr:"Burger Joseph Classic",ar:"برغر جوزيف الكلاسيكي",price:850,img:"https://i.postimg.cc/3xVJ1YkP/burger-algerien.jpg"},
-      {fr:"Double Cheese Burger",ar:"دبل تشيز برغر",price:1200,img:"https://i.postimg.cc/7YkXvJ7M/double-cheese-algerien.jpg"},
-      {fr:"Tacos Viande Hachée",ar:"تاكوس لحم مفروم (جزايري)",price:900,img:"https://i.postimg.cc/3wQb8YkM/tacos-algerien-real.jpg"},
-      {fr:"Tacos 3 Viandes",ar:"تاكوس 3 لحوم",price:1300,img:"https://i.postimg.cc/0yQ8Yk3M/tacos-3-viandes-algerien.jpg"},
-      {fr:"Panini Escalope",ar:"بانيني اسكالوب",price:800,img:"https://i.postimg.cc/9QJ8Yk2M/panini-algerien-real.jpg"},
-      {fr:"Frites + Sauce Algerienne",ar:"بطاطس مع الصلصة الجزايرية",price:350,img:"https://i.postimg.cc/5y8Yk1M/frites-sauce-algerienne.jpg"},
-      {fr:"Menu Enfant (Cheeseburger + Frites + Hamoud)",ar:"منيو الأطفال (شيزبرغر + بطاطس + حمود)",price:950,img:"https://i.postimg.cc/3xVJ1YkP/menu-enfant-hamoud.jpg"},
-      {fr:"Hamoud Boualem 1.5L (Blanc/Citron)",ar:"حمود بوعلام 1.5 لتر (أبيض/ليمون)",price:250,img:"https://i.postimg.cc/0yQ8Yk3M/hamoud-boualem.jpg"}
+      {fr:"Burger Joseph Classic",ar:"برغر جوزيف",price:850,img:"https://i.postimg.cc/wj9Yk3pM/burger-classic.jpg"},
+      {fr:"Double Cheese Burger",ar:"دبل شيز برغر",price:1200,img:"https://i.postimg.cc/5y8Yk1M/double-cheese.jpg"},
+      {fr:"Tacos Viande Hachée",ar:"تاكوس لحم مفروم",price:900,img:"https://i.postimg.cc/3wQb8YkM/tacos-algerien.jpg"},
+      {fr:"Tacos 3 Viandes",ar:"تاكوس 3 لحوم",price:1300,img:"https://i.postimg.cc/0yQ8Yk3M/tacos-3-viandes.jpg"},
+      {fr:"Panini Escalope",ar:"بانيني اسكالوب",price:800,img:"https://i.postimg.cc/9QJ8Yk2M/panini-escalope.jpg"},
+      {fr:"Frites + Sauce Algérienne",ar:"بطاطس مع الصلصة",price:350,img:"https://i.postimg.cc/5y8Yk1M/frites-sauce.jpg"},
+      {fr:"Menu Enfant + Hamoud",ar:"منيو الطفل + حمود",price:950,img:"https://i.postimg.cc/3xVJ1YkP/menu-enfant-hamoud.jpg"},
+      {fr:"Hamoud Boualem 1.5L",ar:"حمود بوعلام 1.5ل",price:250,img:"https://i.postimg.cc/0yQ8Yk3M/hamoud-boualem.jpg"}
     ];
 
     const promos = [
-      {fr:"Tacos Algérien",ar:"تاكوس جزايري",oldPrice:900,price:750,img:"https://i.postimg.cc/3wQb8YkM/tacos-algerien-real.jpg"},
-      {fr:"Menu Enfant + Hamoud",ar:"منيو الأطفال + حمود",oldPrice:950,price:799,img:"https://i.postimg.cc/3xVJ1YkP/menu-enfant-hamoud.jpg"}
+      {fr:"Tacos Algérien",ar:"تاكوس جزايري",oldPrice:900,price:750,img:"https://i.postimg.cc/3wQb8YkM/tacos-algerien.jpg"},
+      {fr:"Menu Enfant + Hamoud",ar:"منيو طفل + حمود",oldPrice:950,price:799,img:"https://i.postimg.cc/3xVJ1YkP/menu-enfant-hamoud.jpg"}
     ];
 
-    let currentLang='fr', cart=[], selectedCity="Gouraya";
+    let lang='fr', cart=[], city="Gouraya";
 
-    document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{currentLang=b.dataset.lang;document.documentElement.lang=currentLang;document.documentElement.dir=currentLang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-lang]').forEach(x=>x.classList.remove('active'));b.classList.add('active');updateAll();}));
-    document.querySelectorAll('[data-theme]').forEach(b=>b.addEventListener('click',()=>{document.body.dataset.theme=b.dataset.theme;document.querySelectorAll('[data-theme]').forEach(x=>x.classList.remove('active'));b.classList.add('active');}));
-    function updateAll(){document.querySelectorAll('[data-tr],[data-tr-city]').forEach(el=>{const k=el.dataset.tr||el.dataset.trCity;el.innerHTML=translations[currentLang][k]||el.innerHTML;});updateMenu();updatePromos();}
-    function updateMenu(){const g=document.getElementById('menu-grid');g.innerHTML='';menuItems.forEach((it,i)=>{g.innerHTML+=`<div class="card"><img src="${it.img}" alt=""><div style="padding:1.5rem;"><h3>${currentLang==='fr'?it.fr:it.ar}</h3><div class="price">${it.price} DA</div><button class="btn" onclick="addToCart(${i})" style="width:100%;margin-top:1rem;">${currentLang==='fr'?'Ajouter':'اضف للسلة'}</button></div></div>`;});}
-    function updatePromos(){const g=document.getElementById('promos-grid');g.innerHTML='';promos.forEach((it,i)=>{g.innerHTML+=`<div class="card"><img src="${it.img}" alt=""><div style="padding:1.5rem;"><h3>${currentLang==='fr'?it.fr:it.ar} <span class="promo-badge">${currentLang==='fr'?'Promo':'عرض'}</span></h3><div class="price"><span class="old-price">${it.oldPrice} DA</span> ${it.price} DA</div><button class="btn" onclick="addPromo(${i})" style="width:100%;margin-top:1rem;background:#28a745;">${currentLang==='fr'?'Ajouter Promo':'اضف العرض'}</button></div></div>`;});}
-    function addToCart(i){cart.push(menuItems[i]);updateCart();}
-    function addPromo(i){cart.push({...promos[i],price:promos[i].price});updateCart();}
-    function updateCart(){const items=document.getElementById('cart-items');items.innerHTML='';let t=0;cart.forEach((it,i)=>{t+=it.price;items.innerHTML+=`<div style="display:flex;justify-content:space-between;padding:1rem 0;border-bottom:1px solid #eee;"><div><strong>${currentLang==='fr'?it.fr||it.name:it.ar||it.name}</strong><br>${it.price} DA</div><button onclick="cart.splice(${i},1);updateCart()" style="background:none;border:none;color:red;font-size:1.8rem;">×</button></div>`;});document.querySelector('.cart-count').textContent=cart.length;document.getElementById('cart-total').textContent=t.toLocaleString();}
+    document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=_=>{lang=b.dataset.lang;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('[data-lang]').forEach(x=>x.classList.remove('active'));b.classList.add('active');upd();});
+    document.querySelectorAll('[data-theme]').forEach(b=>b.onclick=_=>{document.body.dataset.theme=b.dataset.theme;document.querySelectorAll('[data-theme]').forEach(x=>x.classList.remove('active'));b.classList.add('active');});
+    function upd(){document.querySelectorAll('[data-tr],[data-tr-city]').forEach(e=>{let k=e.dataset.tr||e.dataset.trCity;e.innerHTML=t[lang][k]||e.innerHTML;});menu();promo();}
+    function menu(){let g=document.getElementById('menu-grid');g.innerHTML='';menuItems.forEach((i,x)=>{g.innerHTML+=`<div class="card"><img src="${i.img}"><div style="padding:1.5rem;"><h3>${lang==='fr'?i.fr:i.ar}</h3><div class="price">${i.price} DA</div><button class="btn" onclick="add(${x})" style="width:100%;margin-top:1rem;">${lang==='fr'?'Ajouter':'اضف'}</button></div></div>`;});}
+    function promo(){let g=document.getElementById('promos-grid');g.innerHTML='';promos.forEach((i,x)=>{g.innerHTML+=`<div class="card"><img src="${i.img}"><div style="padding:1.5rem;"><h3>${lang==='fr'?i.fr:i.ar} <span class="promo-badge">PROMO</span></h3><div class="price"><span class="old-price">${i.oldPrice} DA</span> ${i.price} DA</div><button class="btn" onclick="addPromo(${x})" style="width:100%;margin-top:1rem;background:#28a745;">${lang==='fr'?'Ajouter Promo':'اضف العرض'}</button></div></div>`;});}
+    function add(x){cart.push(menuItems[x]);updcart();}
+    function addPromo(x){cart.push({...promos[x],price:promos[x].price});updcart();}
+    function updcart(){let items=document.getElementById('cart-items');items.innerHTML='';let tot=0;cart.forEach((i,x)=>{tot+=i.price;items.innerHTML+=`<div style="display:flex;justify-content:space-between;padding:1rem 0;border-bottom:1px solid #eee;"><div><strong>${lang==='fr'?i.fr||i.name:i.ar||i.name}</strong><br>${i.price} DA</div><button onclick="cart.splice(${x},1);updcart()" style="background:none;border:none;color:red;font-size:1.8rem;">×</button></div>`;});document.querySelector('.cart-count').textContent=cart.length;document.getElementById('cart-total').textContent=tot;}
     function toggleCart(){document.getElementById('cart').classList.toggle('open');}
-    function checkout(){if(cart.length===0)return alert(currentLang==='fr'?'Panier vide !':'السلة فارغة !');let msg=currentLang==='fr'?`*Commande JosephChef - ${selectedCity}*\n\n`:`*طلبية جوزيف شيف - ${selectedCity}*\n\n`;let total=0;cart.forEach(it=>{msg+=`• ${currentLang==='fr'?it.fr||it.name:it.ar||it.name} : ${it.price} DA\n`;total+=it.price;});msg+=`\n*${currentLang==='fr'?'Total':'المجموع'} : ${total} DA*\nشكرا 😋`;window.open(`https://wa.me/213559306968?text=${encodeURIComponent(msg)}`,'_blank');}
-    document.querySelectorAll('.city-btn').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.city-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');selectedCity=b.textContent.trim();}));
-    updateAll();
+    function checkout(){if(!cart.length)return alert(lang==='fr'?'Panier vide !':'السلة فارغة !');let msg=lang==='fr'?`*Commande JosephChef - ${city}*\n\n`:`*طلبية جوزيف شيف - ${city}*\n\n`;let tot=0;cart.forEach(i=>{msg+=`• ${lang==='fr'?i.fr||i.name:i.ar||i.name} : ${i.price} DA\n`;tot+=i.price;});msg+=`\n*Total : ${tot} DA*\nشكرا`;open(`https://wa.me/213559306968?text=${encodeURIComponent(msg)}`,'_blank');}
+    document.querySelectorAll('.city-btn').forEach(b=>b.onclick=_=>{document.querySelectorAll('.city-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');city=b.textContent.trim();});
+    upd();
   </script>
 </body>
 </html>
