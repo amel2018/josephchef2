@@ -26,4 +26,106 @@
     .old-price{text-decoration:line-through;color:#999;margin-left:12px;font-size:1.8rem;}
     .add{background:#e63946;color:#fff;border:none;padding:18px;border-radius:50px;width:100%;margin-top:15px;font-size:1.4rem;cursor:pointer;}
     .add.promo{background:#28a745;}
-    .cart{position:fixed;top:0;right:-100%;width:100%;max-width:430px;height:100vh;background:#0d1b2a;box-shadow:-15px 0 50px rgba(0,0,
+    .cart{position:fixed;top:0;right:-100%;width:100%;max-width:430px;height:100vh;background:#0d1b2a;box-shadow:-15px 0 50px rgba(0,0,0,.8);transition:.5s;z-index:2000;padding:30px;overflow-y:auto;}
+    .cart.open{right:0;}
+    footer{background:#000;padding:60px;text-align:center;}
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="https://files.catbox.moe/4w2q3m.png" alt="JosephChef Logo" class="logo-img">
+    <div style="font-size:2.3rem;cursor:pointer;" onclick="toggleCart()">Panier</div>
+  </header>
+
+  <div class="hero">
+    <h1>JosephChef</h1>
+    <p>Pizza carrée 50 DA • Manchons 50 DA • Livraison Gouraya & Tipaza</p>
+    <div class="btn" onclick="window.location='#menu'">Commander maintenant</div>
+  </div>
+
+  <div class="section">
+    <h2 class="title">Promotions du jour</h2>
+    <div class="grid" id="promos"></div>
+  </div>
+
+  <div class="section" style="background:#1b263b;">
+    <h2 class="title">Menu complet</h2>
+    <div class="grid" id="menu"></div>
+  </div>
+
+  <div class="cart" id="cart">
+    <h2 style="font-size:2.8rem;margin-bottom:30px;">Panier</h2>
+    <div id="cartitems"></div>
+    <div style="margin:40px 0;font-size:2.5rem;color:#e63946;font-weight:900;">Total : <span id="total">0</span> DA</div>
+    <div class="btn" onclick="checkout()">Commander WhatsApp</div>
+    <div class="btn" style="background:#777;margin-top:15px;" onclick="toggleCart()">Fermer</div>
+  </div>
+
+  <footer>
+    <p style="font-size:1.8rem;">
+      <strong>Gouraya</strong> : À côté de l’hôpital<br>
+      <strong>Tipaza</strong> : À côté de l’université
+    </p>
+    <p style="font-size:3rem;margin:30px 0;font-weight:900;">0559 30 69 68</p>
+  </footer>
+
+  <script>
+    const items = [
+      {name:"Pizza Carrée DZ",price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
+      {name:"Manchons de Poulet",price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
+      {name:"Pizza Marguerite",price:200,img:"https://files.catbox.moe/3t2q8x.jpg"},
+      {name:"Pizza Champignons",price:400,img:"https://files.catbox.moe/9pL5mN.jpg"},
+      {name:"Pizza 3 Fromages",price:450,img:"https://files.catbox.moe/r4f7k2.jpg"},
+      {name:"Pizza Poulet",price:450,img:"https://files.catbox.moe/h6g9v1.jpg"},
+      {name:"Pizza Viande Hachée",price:450,img:"https://files.catbox.moe/z3c8t5.jpg"},
+      {name:"Tacos Algérien",price:900,img:"https://files.catbox.moe/9y8v3k.jpg"},
+      {name:"Burger Classic",price:850,img:"https://files.catbox.moe/5kpjK8.jpg"}
+    ];
+
+    const promos = [
+      {name:"Pizza Carrée DZ",old:150,price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
+      {name:"Manchons",old:120,price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
+      {name:"Pizza Marguerite",old:350,price:200,img:"https://files.catbox.moe/3t2q8x.jpg"}
+    ];
+
+    let cart = [];
+
+    function render(){
+      document.getElementById('menu').innerHTML = items.map((i,x)=>`
+        <div class="card"><img src="${i.img}" loading="lazy">
+          <div class="card-body"><div class="name">${i.name}</div>
+          <div class="price">${i.price} DA</div>
+          <button class="add" onclick="add(${x})">Ajouter</button></div></div>`).join('');
+
+      document.getElementById('promos').innerHTML = promos.map((i,x)=>`
+        <div class="card"><img src="${i.img}" loading="lazy">
+          <div class="card-body"><div class="name">${i.name} <span style="background:#28a745;color:#fff;padding:8px 16px;border-radius:20px;">PROMO</span></div>
+          <div><span class="old-price">${i.old} DA</span> <span class="price">${i.price} DA</span></div>
+          <button class="add promo" onclick="addPromo(${x})">Ajouter Promo</button></div></div>`).join('');
+    }
+
+    function add(x){ cart.push(items[x]); update(); }
+    function addPromo(x){ cart.push({...promos[x],price:promos[x].price}); update(); }
+    function update(){
+      let h=''; let t=0;
+      cart.forEach((i,x)=>{ t+=i.price; h+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid #333;">
+        <div><b>${i.name}</b><br>${i.price} DA</div>
+        <button style="background:none;border:none;color:#e63946;font-size:2.5rem;" onclick="cart.splice(${x},1);update()">×</button></div>`; });
+      document.getElementById('cartitems').innerHTML = h||'<p style="color:#555;text-align:center;">Panier vide</p>';
+      document.getElementById('total').textContent = t;
+    }
+
+    function toggleCart(){ document.getElementById('cart').classList.toggle('open'); }
+    function checkout(){
+      if(!cart.length) return alert("Panier vide !");
+      let msg="*Commande JosephChef*\n\n";
+      let t=0; cart.forEach(i=>{ msg+=`• ${i.name} : ${i.price} DA\n`; t+=i; });
+      msg+=`\n*Total : ${t} DA*\nMerci frère !`;
+      open('https://wa.me/213559306968?text='+encodeURIComponent(msg));
+    }
+
+    render();
+  </script>
+</body>
+</html>
