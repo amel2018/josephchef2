@@ -10,29 +10,29 @@
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:'Cairo','Poppins',sans-serif;background:var(--dark);color:#fff;}
     header{background:var(--red);padding:15px 5%;position:fixed;top:0;width:100%;z-index:1000;display:flex;justify-content:space-between;align-items:center;box-shadow:0 6px 25px rgba(0,0,0,.8);}
-    .logo-img{height:92px;filter:drop-shadow(0 4px 10px #000);}
-    .lang{position:fixed;top:15px;right:15px;z-index:1001;background:rgba(0,0,0,.8);padding:6px;border-radius:50px;display:flex;}
-    .lang button{padding:10px 18px;background:transparent;color:#fff;border:none;font-weight:900;border-radius:50px;cursor:pointer;}
+    .logo-img{height:95px;filter:drop-shadow(0 4px 12px #000);}
+    .lang{position:fixed;top:15px;right:15px;z-index:1001;background:rgba(0,0,0,.9);padding:6px;border-radius:50px;}
+    .lang button{padding:10px 20px;background:transparent;color:#fff;border:none;font-weight:900;border-radius:50px;cursor:pointer;}
     .lang button.active{background:var(--red);}
-    .hero{background:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.88)),url('https://files.catbox.moe/8x5r9t.jpg') center/cover fixed;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
-    .hero h1{font-size:6.8rem;font-weight:900;text-shadow:0 8px 30px #000;}
-    .hero p{font-size:2.4rem;margin:25px 0;}
-    .btn{background:var(--green);color:#fff;padding:22px 75px;border-radius:50px;font-size:2.3rem;font-weight:900;cursor:pointer;box-shadow:0 12px 35px rgba(37,211,102,.6);}
+    .hero{background:linear-gradient(rgba(0,0,0,.9),rgba(0,0,0,.9)),url('https://files.catbox.moe/8x5r9t.jpg') center/cover fixed;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
+    .hero h1{font-size:7rem;font-weight:900;text-shadow:0 8px 30px #000;}
+    .hero p{font-size:2.5rem;margin:25px 0;}
+    .btn{background:var(--green);color:#fff;padding:22px 80px;border-radius:50px;font-size:2.4rem;font-weight:900;cursor:pointer;box-shadow:0 12px 35px rgba(37,211,102,.6);}
     .section{padding:100px 5%;text-align:center;}
-    .title{font-size:4.2rem;margin-bottom:70px;color:var(--red);}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:35px;}
-    .card{background:var(--card);border-radius:30px;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.7);transition:.4s;position:relative;}
-    .card:hover{transform:translateY(-20px);}
-    .card img{width:100%;height:270px;object-fit:cover;}
-    .card-body{padding:25px;}
-    .name{font-size:2rem;font-weight:900;margin-bottom:15px;}
-    .desc{font-size:1.15rem;color:#ddd;line-height:1.6;margin-bottom:15px;}
-    .price{color:var(--red);font-size:2.8rem;font-weight:900;}
-    .old-price{text-decoration:line-through;color:#999;margin-left:12px;font-size:1.8rem;}
-    .add{background:var(--red);color:#fff;border:none;padding:18px;border-radius:50px;width:100%;margin-top:15px;font-size:1.5rem;font-weight:700;cursor:pointer;}
+    .title{font-size:4.3rem;margin-bottom:70px;color:var(--red);}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:38px;}
+    .card{background:var(--card);border-radius:32px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.7);transition:.4s;position:relative;}
+    .card:hover{transform:translateY(-22px);}
+    .card img{width:100%;height:280px;object-fit:cover;}
+    .card-body{padding:28px;}
+    .name{font-size:2.1rem;font-weight:900;margin-bottom:12px;}
+    .desc{font-size:1.2rem;color:#eee;line-height:1.6;margin-bottom:15px;}
+    .price{color:var(--red);font-size:2.9rem;font-weight:900;}
+    .old-price{text-decoration:line-through;color:#999;margin-left:12px;font-size:1.9rem;}
+    .add{background:var(--red);color:#fff;border:none;padding:18px;border-radius:50px;width:100%;margin-top:15px;font-size:1.6rem;font-weight:700;cursor:pointer;}
     .add.promo{background:#28a745;}
-    .badge{position:absolute;top:15px;left:15px;background:#28a745;color:#fff;padding:10px 18px;border-radius:25px;font-weight:900;z-index:10;}
-    .cart{position:fixed;top:0;right:-100%;width:100%;max-width:450px;height:100vh;background:var(--dark);box-shadow:-15px 0 60px rgba(0,0,0,.9);transition:.5s;z-index:999;padding:35px;overflow-y:auto;}
+    .badge{position:absolute;top:15px;left:15px;background:#28a745;color:#fff;padding:10px 20px;border-radius:25px;font-weight:900;font-size:1.1rem;}
+    .cart{position:fixed;top:0;right:-100%;width:100%;max-width:460px;height:100vh;background:var(--dark);box-shadow:-15px 0 60px rgba(0,0,0,.9);transition:.5s;z-index:999;padding:35px;overflow-y:auto;}
     .cart.open{right:0;}
     footer{background:#000;padding:70px;text-align:center;}
   </style>
@@ -46,12 +46,12 @@
 
   <header>
     <img src="https://files.catbox.moe/4w2q3m.png" alt="JosephChef" class="logo-img">
-    <div style="font-size:2.5rem;cursor:pointer;" onclick="toggleCart()">Panier</div>
+    <div style="font-size:2.6rem;cursor:pointer;" onclick="toggleCart()">Panier</div>
   </header>
 
   <div class="hero">
     <h1>JosephChef</h1>
-    <p>Manchon au fromage 50 DA • Burger 300 DA • Livraison Gouraya & Tipaza</p>
+    <p>Manchon au fromage 50 DA • Tacos 450 DA • Livraison Gouraya & Tipaza</p>
     <div class="btn" onclick="window.location='#menu'">Commander maintenant</div>
   </div>
 
@@ -66,42 +66,41 @@
   </div>
 
   <div class="cart" id="cart">
-    <h2 style="font-size:3.2rem;margin-bottom:35px;">Panier</h2>
+    <h2 style="font-size:3.3rem;margin-bottom:35px;">Panier</h2>
     <div id="cartitems"></div>
-    <div style="margin:50px 0;font-size:3rem;color:var(--red);font-weight:900;">Total : <span id="total">0</span> DA</div>
+    <div style="margin:50px 0;font-size:3.1rem;color:var(--red);font-weight:900;">Total : <span id="total">0</span> DA</div>
     <div class="btn" onclick="checkout()">Commander WhatsApp</div>
     <div class="btn" style="background:#666;margin-top:20px;" onclick="toggleCart()">Fermer</div>
   </div>
 
   <footer>
-    <p style="font-size:2.1rem;"><strong>Gouraya</strong> : À côté de l’hôpital | <strong>Tipaza</strong> : À côté de l’université</p>
-    <p style="font-size:3.8rem;margin:35px 0;font-weight:900;">0559 30 69 68</p>
+    <p style="font-size:2.2rem;"><strong>Gouraya</strong> : À côté de l’hôpital | <strong>Tipaza</strong> : À côté de l’université</p>
+    <p style="font-size:4rem;margin:35px 0;font-weight:900;">0559 30 69 68</p>
   </footer>
 
   <script>
     const menu = [
-      {fr:"Pizza Carrée Algérienne",ar:"بيتزا مربعة جزايرية",desc:"Sauce algérienne, fromage fondu, olives",price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
+      {fr:"Pizza Carrée Algérienne",ar:"بيتزا مربعة",desc:"Sauce algérienne + fromage fondu",price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
       {fr:"Manchon au Fromage",ar:"منشون بالجبن",desc:"",price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
-      {fr:"Burger Classic",ar:"برغر كلاسيك",desc:"Steak 100% bœuf, cheddar, sauce maison",price:300,img:"https://files.catbox.moe/5kpjK8.jpg"},
-      {fr:"Double Cheese Burger",ar:"دبل تشيز برغر",desc:"Double steak, double fromage",price:300,img:"https://files.catbox.moe/4pQ8YkM.jpg"},
-      {fr:"Pizza Marguerite",ar:"بيتزا مارغريتا",desc:"Tomate fraîche, mozzarella, basilic",price:200,img:"https://files.catbox.moe/3t2q8x.jpg"},
-      {fr:"Pizza Champignons",ar:"بيتزا فطر",desc:"Champignons frais, crème légère",price:400,img:"https://files.catbox.moe/9pL5mN.jpg"},
+      {fr:"Burger Classic",ar:"برغر كلاسيك",desc:"Steak bœuf, cheddar, sauce maison",price:300,img:"https://files.catbox.moe/5kpjK8.jpg"},
+      {fr:"Double Cheese Burger",ar:"دبل تشيز برغر",desc:"Double steak + double fromage",price:500,img:"https://files.catbox.moe/4pQ8YkM.jpg"},
+      {fr:"Pizza Marguerite",ar:"بيتزا مارغريتا",desc:"Tomate, mozzarella, basilic",price:200,img:"https://files.catbox.moe/3t2q8x.jpg"},
+      {fr:"Pizza Champignons",ar:"بيتزا فطر",desc:"Champignons frais + crème",price:400,img:"https://files.catbox.moe/9pL5mN.jpg"},
       {fr:"Pizza 3 Fromages",ar:"بيتزا 3 جبنات",desc:"Mozzarella, cheddar, emmental",price:450,img:"https://files.catbox.moe/r4f7k2.jpg"},
-      {fr:"Pizza Poulet",ar:"بيتزا دجاج",desc:"Poulet grillé, oignons, poivrons",price:450,img:"https://files.catbox.moe/h6g9v1.jpg"},
-      {fr:"Pizza Viande Hachée",ar:"بيتزا كفتة",desc:"Viande hachée épicée, sauce algérienne",price:450,img:"https://files.catbox.moe/z3c8t5.jpg"},
-      {fr:"Tacos Algérien",ar:"تاكوس جزايري",desc:"Sauce algérienne, frites dedans, fromage",price:750,img:"https://files.catbox.moe/9y8v3k.jpg"},
-      {fr:"Tacos 3 Viandes",ar:"تاكوس 3 لحوم",desc:"Poulet + viande + merguez",price:1300,img:"https://files.catbox.moe/3vL9mKp.jpg"},
-      {fr:"Panini Escalope",ar:"بانيني اسكالوب",desc:"Escalope panée, fromage fondu",price:800,img:"https://files.catbox.moe/9pR7vJc.jpg"},
-      {fr:"Frites + Sauce Algérienne",ar:"بطاطس + صلصة",desc:"Grande portion bien chargée",price:350,img:"https://files.catbox.moe/L8kM2v.jpg"},
-      {fr:"Menu Enfant + Boisson",ar:"منيو طفل + مشروب",desc:"Mini burger + frites + boisson",price:500,img:"https://files.catbox.moe/3x2v9p.jpg"},
-      {fr:"Hamoud Boualem 1.5L",ar:"حمود 1.5ل",desc:"Bien froid",price:250,img:"https://files.catbox.moe/0yQ8Yk3M.jpg"}
+      {fr:"Pizza Poulet",ar:"بيتزا دجاج",desc:"Poulet grillé + poivrons",price:450,img:"https://files.catbox.moe/h6g9v1.jpg"},
+      {fr:"Pizza Viande Hachée",ar:"بيتزا كفتة",desc:"Viande hachée épicée",price:450,img:"https://files.catbox.moe/z3c8t5.jpg"},
+      {fr:"Tacos Algérien",ar:"تاكوس جزايري",desc:"Sauce algérienne + frites + fromage",price:450,img:"https://files.catbox.moe/9y8v3k.jpg"},
+      {fr:"Tacos 3 Viandes",ar:"تاكوس 3 لحوم",desc:"Poulet + viande + merguez",price:750,img:"https://files.catbox.moe/3vL9mKp.jpg"},
+      {fr:"Frites + Sauce",ar:"بطاطس + صلصة",desc:"Grande portion",price:350,img:"https://files.catbox.moe/L8kM2v.jpg"},
+      {fr:"Menu Enfant",ar:"منيو طفل",desc:"Mini burger + frites + boisson",price:500,img:"https://files.catbox.moe/3x2v9p.jpg"},
+      {fr:"Hamoud 1.5L",ar:"حمود 1.5ل",desc:"Bien froid",price:250,img:"https://files.catbox.moe/0yQ8Yk3M.jpg"}
     ];
 
     const promos = [
-      {fr:"Pizza Carrée DZ",ar:"بيتزا مربعة",old:150,price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
+      {fr:"Pizza Carrée",ar:"بيتزا مربعة",old:150,price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
       {fr:"Manchon au Fromage",ar:"منشون بالجبن",old:120,price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
-      {fr:"Burger Classic",ar:"برغر كلاسيك",old:600,price:300,img:"https://files.catbox.moe/5kpjK8.jpg"},
-      {fr:"Menu Enfant",ar:"منيو طفل",old:800,price:500,img:"https://files.catbox.moe/3x2v9p.jpg"}
+      {fr:"Tacos Algérien",ar:"تاكوس",old:700,price:450,img:"https://files.catbox.moe/9y8v3k.jpg"},
+      {fr:"Double Cheese Burger",ar:"دبل تشيز",old:800,price:500,img:"https://files.catbox.moe/4pQ8YkM.jpg"}
     ];
 
     let cart = [], lang = 'fr';
@@ -140,9 +139,9 @@
     function updateCart(){
       let html='', total=0;
       cart.forEach((i,x)=>{ total+=i.price;
-        html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid #444;">
+        html+=`<div style="display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid #444;">
           <div><b>${lang==='fr'?i.fr:i.ar}</b><br>${i.price} DA</div>
-          <button style="background:none;border:none;color:var(--red);font-size:2.8rem;" onclick="cart.splice(${x},1);updateCart()">×</button>
+          <button style="background:none;border:none;color:var(--red);font-size:3rem;" onclick="cart.splice(${x},1);updateCart()">×</button>
         </div>`;
       });
       document.getElementById('cartitems').innerHTML = html || '<p style="text-align:center;color:#888;">Panier vide</p>';
