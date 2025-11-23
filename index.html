@@ -26,7 +26,6 @@
     .card img{width:100%;height:290px;object-fit:cover;}
     .card-body{padding:28px;text-align:center;}
     .name{font-size:2.1rem;font-weight:900;margin-bottom:12px;}
-    .desc{font-size:1.2rem;color:#eee;margin-bottom:15px;}
     .price{color:var(--red);font-size:3rem;font-weight:900;}
     .old-price{text-decoration:line-through;color:#999;margin-left:12px;font-size:1.9rem;}
     .add{background:var(--red);color:#fff;border:none;padding:18px;border-radius:50px;width:100%;margin-top:15px;font-size:1.6rem;font-weight:700;cursor:pointer;}
@@ -74,25 +73,25 @@
 
   <script>
     const menu = [
-      {fr:"Pizza Carrée Algérienne",ar:"بيتزا مربعة",price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
-      {fr:"Manchon au Fromage",ar:"منشون بالجبن",price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
-      {fr:"Burger Classic",ar:"برغر كلاسيك",price:300,img:"https://files.catbox.moe/5kpjK8.jpg"},
-      {fr:"Double Cheese Burger",ar:"دبل تشيز",price:500,img:"https://files.catbox.moe/4pQ8YkM.jpg"},
-      {fr:"Tacos Algérien",ar:"تاكوس جزايري",price:450,img:"https://files.catbox.moe/9y8v3k.jpg"},
-      {fr:"Tacos 3 Viandes",ar:"تاكوس 3 لحوم",price:750,img:"https://files.catbox.moe/3vL9mKp.jpg"},
-      {fr:"Escalope Grillée",ar:"اسكالوب مشوي",desc:"Escalope bien grillée + sauce",price:600,img:"https://files.catbox.moe/escalope-grillee.jpg"},
-      {fr:"Poulet Grillé",ar:"دجاج مشوي",desc:"Morceau de poulet grillé au feu",price:550,img:"https://files.catbox.moe/poulet-grille.jpg"},
-      {fr:"Pizza Marguerite",ar:"مارغريتا",price:200,img:"https://files.catbox.moe/3t2q8x.jpg"},
-      {fr:"Frites + Sauce",ar:"بطاطس + صلصة",price:350,img:"https://files.catbox.moe/L8kM2v.jpg"},
-      {fr:"Menu Enfant",ar:"منيو طفل",price:500,img:"https://files.catbox.moe/3x2v9p.jpg"},
-      {fr:"Hamoud 1.5L",ar:"حمود 1.5ل",price:250,img:"https://files.catbox.moe/0yQ8Yk3M.jpg"}
+      {fr:"Pizza Carrée Algérienne",ar:"بيتزا مربعة",price:50,img:"https://i.ibb.co.com/5jG5v8L/pizza-carree-algerie.jpg"},
+      {fr:"Manchon au Fromage",ar:"منشون بالجبن",price:50,img:"https://i.ibb.co.com/8Xb0vYk/manchon-fromage-real.jpg"},
+      {fr:"Burger Classic",ar:"برغر كلاسيك",price:300,img:"https://i.ibb.co.com/9b6Y3nK/burger-classic-real.jpg"},
+      {fr:"Double Cheese Burger",ar:"دبل تشيز",price:500,img:"https://i.ibb.co.com/4pY8nL9/double-cheese-real.jpg"},
+      {fr:"Tacos Algérien",ar:"تاكوس جزايري",price:450,img:"https://i.ibb.co.com/7JqW9vP/tacos-algerien-real.jpg"},
+      {fr:"Tacos 3 Viandes",ar:"تاكوس 3 لحوم",price:750,img:"https://i.ibb.co.com/3vL9mKp/tacos-3-viandes-real.jpg"},
+      {fr:"Escalope Grillée",ar:"اسكالوب مشوي",price:600,img:"https://i.ibb.co.com/ZcY8vL9/escalope-grillee-real.jpg"},
+      {fr:"Poulet Grillé",ar:"دجاج مشوي",price:550,img:"https://i.ibb.co.com/8dR5vYk/poulet-grille-real.jpg"},
+      {fr:"Pizza Marguerite",ar:"مارغريتا",price:200,img:"https://i.ibb.co.com/3t2q8x/pizza-margherita-real.jpg"},
+      {fr:"Frites + Sauce",ar:"بطاطس + صلصة",price:350,img:"https://i.ibb.co.com/L8kM2v/frites-sauce-real.jpg"},
+      {fr:"Menu Enfant",ar:"منيو طفل",price:500,img:"https://i.ibb.co.com/3x2v9p/menu-enfant-real.jpg"},
+      {fr:"Hamoud 1.5L",ar:"حمود 1.5ل",price:250,img:"https://i.ibb.co.com/0yQ8Yk3M/hamoud-real.jpg"}
     ];
 
     const promos = [
-      {fr:"Pizza Carrée",ar:"بيتزا مربعة",old:150,price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
-      {fr:"Manchon",ar:"منشون",old:120,price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
-      {fr:"Tacos Algérien",ar:"تاكوس",old:700,price:450,img:"https://files.catbox.moe/9y8v3k.jpg"},
-      {fr:"Escalope Grillée",ar:"اسكالوب مشوي",old:900,price:600,img:"https://files.catbox.moe/escalope-grillee.jpg"}
+      {fr:"Pizza Carrée",ar:"بيتزا مربعة",old:150,price:50,img:"https://i.ibb.co.com/5jG5v8L/pizza-carree-algerie.jpg"},
+      {fr:"Manchon",ar:"منشون",old:120,price:50,img:"https://i.ibb.co.com/8Xb0vYk/manchon-fromage-real.jpg"},
+      {fr:"Tacos Algérien",ar:"تاكوس",old:700,price:450,img:"https://i.ibb.co.com/7JqW9vP/tacos-algerien-real.jpg"},
+      {fr:"Escalope Grillée",ar:"اسكالوب",old:900,price:600,img:"https://i.ibb.co.com/ZcY8vL9/escalope-grillee-real.jpg"}
     ];
 
     let cart = [], lang = 'fr';
@@ -102,7 +101,6 @@
         <div class="card"><img src="${i.img}" loading="lazy" alt="${lang==='fr'?i.fr:i.ar}">
           <div class="card-body">
             <div class="name">${lang==='fr'?i.fr:i.ar}</div>
-            ${i.desc?`<div class="desc">${i.desc}</div>`:''}
             <div class="price">${i.price} DA</div>
             <button class="add" onclick="add(${x})">Ajouter</button>
           </div>
