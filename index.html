@@ -25,7 +25,7 @@
     .card:hover{transform:translateY(-20px);}
     .card img{width:100%;height:270px;object-fit:cover;}
     .card-body{padding:25px;}
-    .name{font-size:2rem;font-weight:900;margin-bottom:10px;}
+    .name{font-size:2rem;font-weight:900;margin-bottom:15px;}
     .desc{font-size:1.15rem;color:#ddd;line-height:1.6;margin-bottom:15px;}
     .price{color:var(--red);font-size:2.8rem;font-weight:900;}
     .old-price{text-decoration:line-through;color:#999;margin-left:12px;font-size:1.8rem;}
@@ -51,7 +51,7 @@
 
   <div class="hero">
     <h1>JosephChef</h1>
-    <p>Manchons au fromage 50 DA • Burger 300 DA • Livraison Gouraya & Tipaza</p>
+    <p>Manchon au fromage 50 DA • Burger 300 DA • Livraison Gouraya & Tipaza</p>
     <div class="btn" onclick="window.location='#menu'">Commander maintenant</div>
   </div>
 
@@ -81,7 +81,7 @@
   <script>
     const menu = [
       {fr:"Pizza Carrée Algérienne",ar:"بيتزا مربعة جزايرية",desc:"Sauce algérienne, fromage fondu, olives",price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
-      {fr:"Manchons au Fromage (6 pcs)",ar:"منشون بالجبن 6 قطع",desc:"Manchons frits + fromage fondu dessus",price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
+      {fr:"Manchon au Fromage",ar:"منشون بالجبن",desc:"",price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
       {fr:"Burger Classic",ar:"برغر كلاسيك",desc:"Steak 100% bœuf, cheddar, sauce maison",price:300,img:"https://files.catbox.moe/5kpjK8.jpg"},
       {fr:"Double Cheese Burger",ar:"دبل تشيز برغر",desc:"Double steak, double fromage",price:300,img:"https://files.catbox.moe/4pQ8YkM.jpg"},
       {fr:"Pizza Marguerite",ar:"بيتزا مارغريتا",desc:"Tomate fraîche, mozzarella, basilic",price:200,img:"https://files.catbox.moe/3t2q8x.jpg"},
@@ -93,15 +93,15 @@
       {fr:"Tacos 3 Viandes",ar:"تاكوس 3 لحوم",desc:"Poulet + viande + merguez",price:1300,img:"https://files.catbox.moe/3vL9mKp.jpg"},
       {fr:"Panini Escalope",ar:"بانيني اسكالوب",desc:"Escalope panée, fromage fondu",price:800,img:"https://files.catbox.moe/9pR7vJc.jpg"},
       {fr:"Frites + Sauce Algérienne",ar:"بطاطس + صلصة",desc:"Grande portion bien chargée",price:350,img:"https://files.catbox.moe/L8kM2v.jpg"},
-      {fr:"Menu Enfant + Hamoud",ar:"منيو طفل + حمود",desc:"Mini burger + frites + boisson",price:950,img:"https://files.catbox.moe/3x2v9p.jpg"},
+      {fr:"Menu Enfant + Boisson",ar:"منيو طفل + مشروب",desc:"Mini burger + frites + boisson",price:500,img:"https://files.catbox.moe/3x2v9p.jpg"},
       {fr:"Hamoud Boualem 1.5L",ar:"حمود 1.5ل",desc:"Bien froid",price:250,img:"https://files.catbox.moe/0yQ8Yk3M.jpg"}
     ];
 
     const promos = [
       {fr:"Pizza Carrée DZ",ar:"بيتزا مربعة",old:150,price:50,img:"https://files.catbox.moe/k7v9p2.jpg"},
-      {fr:"Manchons au Fromage",ar:"منشون بالجبن",old:120,price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
+      {fr:"Manchon au Fromage",ar:"منشون بالجبن",old:120,price:50,img:"https://files.catbox.moe/8jF6gH.jpg"},
       {fr:"Burger Classic",ar:"برغر كلاسيك",old:600,price:300,img:"https://files.catbox.moe/5kpjK8.jpg"},
-      {fr:"Pizza Marguerite",ar:"مارغريتا",old:350,price:200,img:"https://files.catbox.moe/3t2q8x.jpg"}
+      {fr:"Menu Enfant",ar:"منيو طفل",old:800,price:500,img:"https://files.catbox.moe/3x2v9p.jpg"}
     ];
 
     let cart = [], lang = 'fr';
@@ -111,7 +111,7 @@
         <div class="card"><img src="${i.img}" loading="lazy">
           <div class="card-body">
             <div class="name">${lang==='fr'?i.fr:i.ar}</div>
-            <div class="desc">${i.desc}</div>
+            ${i.desc?`<div class="desc">${i.desc}</div>`:''}
             <div class="price">${i.price} DA</div>
             <button class="add" onclick="add(${x})">Ajouter</button>
           </div>
